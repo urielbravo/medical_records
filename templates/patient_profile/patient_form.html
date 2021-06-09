@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Excelencia en ortodoncia</title>
+</head>
+
+<body>
+    <!-- <h1>create</h1> -->
+
+    <!-- <h2>{{ error }}</h2> -->
+
+    <!-- <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create</button>
+    </form> -->
+
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #6f42c1;">
+        <div class="container">
+            <h3 class="navbar-brand">Formulario</h3>
+        </div>
+    </nav>
+    <div class="container" style="background-color: #e0e0e0;">
+        <div class="row">
+            <div class="col">
+                {% if succes_msg %}
+                    <div class="alert alert-success" role="alert">
+                        {{ succes_msg }}
+                    </div>
+                {% endif %}
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="name" class="form-label">Nombre:</label>
+                            <input id="name" name="name" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="occupation" class="form-label">Ocupacion:</label>
+                            <input id="occupation" name="occupation" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="phone_number" class="form-label">Tel:</label>
+                            <input id="phone_number" name="phone_number" type="tel" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="address" class="form-label">Domicilio:</label>
+                            <input id="address" name="address" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="birthday" class="form-label">Fecha de nacimiento:</label>
+                            <input id="birthday" name="birthday" type="date" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="city_of_birth" class="form-label">Ciudad de nacimiento:</label>
+                            <input id="city_of_birth" name="city_of_birth" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email:</label>
+                            <input id="email" name="email" type="email" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="recommended_by" class="form-label">Recomendado por:</label>
+                            <input id="recommended_by" name="recommended_by" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="motive_of_consultancy" class="form-label">Motivo de consulta:</label>
+                            <input id="motive_of_consultancy" name="motive_of_consultancy" type="text"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <h4 class="text-center">¿Ha tenido alguna vez algo de lo siguiente? (marque los cuadros
+                        correspondientes):</h4>
+                    <br>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="heart_problems" name="heart_problems">
+                                <label class="form-check-label" for="heart_problems">
+                                    Problemas del corazon
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="epilepsy" name="epilepsy">
+                                <label class="form-check-label" for="epilepsy">
+                                    Epilepsia
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="high_blood_pressure" name="high_blood_pressure">
+                                <label class="form-check-label" for="high_blood_pressure">
+                                    Presion sanguinea alta
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="headache" name="headache">
+                                <label class="form-check-label" for="headache">
+                                    Dolores de cabeza
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="low_blood_pressure" name="low_blood_pressure">
+                                <label class="form-check-label" for="low_blood_pressure">
+                                    Presion sanguinea baja
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="hepatitis_or_liver_disease" name="hepatitis_or_liver_disease">
+                                <label class="form-check-label" for="hepatitis_or_liver_disease">
+                                    Hepatitis o enfermedades del higado (A, B o C)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="circulatory_problems" name="circulatory_problems">
+                                <label class="form-check-label" for="circulatory_problems">
+                                    Problemas circulatorios
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="cancer" name="cancer">
+                                <label class="form-check-label" for="cancer">
+                                    Cancer
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="nervous_problems" name="nervous_problems">
+                                <label class="form-check-label" for="nervous_problems">
+                                    Problemas nerviosos
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="psychiatric_treatment" name="psychiatric_treatment">
+                                <label class="form-check-label" for="psychiatric_treatment">
+                                    Tratamiento psiquiatrico
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="radiotherapy" name="radiotherapy">
+                                <label class="form-check-label" for="radiotherapy">
+                                    Radioterapia
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="chronic_diarrhea" name="chronic_diarrhea">
+                                <label class="form-check-label" for="chronic_diarrhea">
+                                    Diarrea cronica
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="artificial_heart_valves" name="artificial_heart_valves">
+                                <label class="form-check-label" for="artificial_heart_valves">
+                                    Valvulas de corazon artificiales
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="anesthesia_allergy" name="anesthesia_allergy">
+                                <label class="form-check-label" for="anesthesia_allergy">
+                                    Alergias a anestesias
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="recent_weight_loss" name="recent_weight_loss">
+                                <label class="form-check-label" for="recent_weight_loss">
+                                    Reciente perdida de peso
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="medicine_allergy" name="medicine_allergy">
+                                <label class="form-check-label" for="medicine_allergy">
+                                    Alergias a medicinas
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="diabetes" name="diabetes">
+                                <label class="form-check-label" for="diabetes">
+                                    Diabetes
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="general_allergies" name="general_allergies">
+                                <label class="form-check-label" for="general_allergies">
+                                    Alergias generales
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="respiratory_disease" name="respiratory_disease">
+                                <label class="form-check-label" for="respiratory_disease">
+                                    Enfermedades respiratorias
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="blood_disease" name="blood_disease">
+                                <label class="form-check-label" for="blood_disease">
+                                    Enfermedades de la sangre
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="arthritis" name="arthritis">
+                                <label class="form-check-label" for="arthritis">
+                                    Artritis
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="hiv_aids" name="hiv_aids">
+                                <label class="form-check-label" for="hiv_aids">
+                                    VIH/SIDA
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="drug_allergy" name="drug_allergy">
+                                <label class="form-check-label" for="drug_allergy">
+                                    ¿Tiene o ha tenido alergia a algun medicamento?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="which_drug_allergy" class="form-label">Si la respuesta es si, ¿A que?</label>
+                            <input type="text" class="form-control" id="which_drug_allergy" name="which_drug_allergy">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="taking_medication" name="taking_medication">
+                                <label class="form-check-label" for="taking_medication">
+                                    ¿Esta tomando algun medicamento?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="which_medication" class="form-label">Si la respuesta es si, ¿Cual?</label>
+                            <input type="text" class="form-control" id="which_medication" name="which_medication">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="under_medical_care" name="under_medical_care">
+                                <label class="form-check-label" for="under_medical_care">
+                                    ¿Actualmente esta usted bajo cuidado medico?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="why_under_medical_care" class="form-label">¿Por que?</label>
+                            <input type="text" class="form-control" id="why_under_medical_care" name="why_under_medical_care">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="might_be_pregnant" name="might_be_pregnant">
+                                <label class="form-check-label" for="might_be_pregnant">
+                                    ¿Sospecha que esta embarazada?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="any_other_thing" class="form-label">¿Alguna otra cosa que debamos saber?</label>
+                            <input type="text" class="form-control" id="any_other_thing" name="any_other_thing">
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <h4 class="text-center">Cuestionario para paciente</h4>
+                    <br>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="orthodontics_brackets" class="form-check-input" type="checkbox"
+                                    id="orthodontics_brackets">
+                                <label class="form-check-label" for="orthodontics_brackets">
+                                    ¿A tenido tratamiento de ortodoncia (frenos)?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="bad_bite" class="form-check-input" type="checkbox"
+                                    id="bad_bite">
+                                <label class="form-check-label" for="bad_bite">
+                                    ¿A tenido tratamiento por mala mordida?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="facial_pain" class="form-check-input" type="checkbox" id="facial_pain">
+                                <label class="form-check-label" for="facial_pain">
+                                    ¿A tenido tratamiento por problemas de dolor de cara?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="face_jaw_hit" class="form-check-input" type="checkbox" id="face_jaw_hit">
+                                <label class="form-check-label" for="face_jaw_hit">
+                                    ¿A recibido algun golpe fuerte en la cara o mandibula?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="comb_pain" class="form-check-input" type="checkbox" id="comb_pain">
+                                <label class="form-check-label" for="comb_pain">
+                                    ¿Siente dolor al peinarse?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="hard_close_teeth" class="form-check-input" type="checkbox"
+                                    id="hard_close_teeth">
+                                <label class="form-check-label" for="hard_close_teeth">
+                                    ¿Aprieta los dientes durante el dia?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="eye_ear_face_pain" class="form-check-input" type="checkbox"
+                                    id="eye_ear_face_pain">
+                                <label class="form-check-label" for="eye_ear_face_pain">
+                                    ¿Tiene dolor o malestar alrededor de los ojos, oidos u otra parte de la cara?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="neck_stiffness" class="form-check-input" type="checkbox"
+                                    id="neck_stiffness">
+                                <label class="form-check-label" for="neck_stiffness">
+                                    ¿Sufre frecuentemente de tension, dolor o rigidez en los musculos del cuello?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="teeth_grind_sleep" class="form-check-input" type="checkbox"
+                                    id="teeth_grind_sleep">
+                                <label class="form-check-label" for="teeth_grind_sleep">
+                                    ¿Le han dicho alguna vez que rechina o hace ruido con los dientes al dormir?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="wake_teeth_pain" class="form-check-input" type="checkbox"
+                                    id="wake_teeth_pain">
+                                <label class="form-check-label" for="wake_teeth_pain">
+                                    ¿Despierta con sensibilidad en sus dientes y/o maxilares?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="hand_fingers_numbness" class="form-check-input" type="checkbox"
+                                    id="hand_fingers_numbness">
+                                <label class="form-check-label" for="hand_fingers_numbness">
+                                    ¿Se le duermen los dedos de las manos?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="ear_noise" class="form-check-input" type="checkbox" id="ear_noise">
+                                <label class="form-check-label" for="ear_noise">
+                                    ¿Ah tenido cambios en la audicion(oido tapado) o ruidos en los odios (un silbido)?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="dizziness_and_nausea" class="form-check-input" type="checkbox"
+                                    id="dizziness_and_nausea">
+                                <label class="form-check-label" for="dizziness_and_nausea">
+                                    ¿Mareos y/ vertigo?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="temporomandibular_joint_pain" class="form-check-input" type="checkbox"
+                                    id="temporomandibular_joint_pain">
+                                <label class="form-check-label" for="temporomandibular_joint_pain">
+                                    ¿Ah tenido alguna vez dolor en la articulacion temporomandibular (de la mandibula)?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="mandibular_joint_click_noise" class="form-check-input" type="checkbox"
+                                    id="mandibular_joint_click_noise">
+                                <label class="form-check-label" for="mandibular_joint_click_noise">
+                                    ¿Ah oido un "clic" o tronido en sus articulaciones mandibulares?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="mandibular_joint_treatment" class="form-check-input" type="checkbox"
+                                    id="mandibular_joint_treatment">
+                                <label class="form-check-label" for="mandibular_joint_treatment">
+                                    ¿Ah tenido tenido tratamiento por problemas de articulacion mandibular?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="fibromyalgia_diagnosis" class="form-check-input" type="checkbox"
+                                    id="fibromyalgia_diagnosis">
+                                <label class="form-check-label" for="fibromyalgia_diagnosis">
+                                    ¿Se le ha diagnosticado fibromialgia?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="sleep_disturbance" class="form-check-input" type="checkbox"
+                                    id="sleep_disturbance">
+                                <label class="form-check-label" for="sleep_disturbance">
+                                    ¿Sufre de alteraciones de sueño?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="wake_up_tired" class="form-check-input" type="checkbox" id="wake_up_tired">
+                                <label class="form-check-label" for="wake_up_tired">
+                                    ¿Despierta cansado?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="aspirin_or_other_analgesic" class="form-check-input" type="checkbox"
+                                    id="aspirin_or_other_analgesic">
+                                <label class="form-check-label" for="aspirin_or_other_analgesic">
+                                    ¿Toma aspirina o algun otro analgesico de forma frecuente?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="nail_tongue_lips_bite" class="form-check-input" type="checkbox"
+                                    id="nail_tongue_lips_bite">
+                                <label class="form-check-label" for="nail_tongue_lips_bite">
+                                    ¿Se come las uñas o se muerde la lengua o los labios?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="chew_gum" class="form-check-input" type="checkbox" id="chew_gum">
+                                <label class="form-check-label" for="chew_gum">
+                                    ¿Mastica chicle frecuentemente?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="perfectionist" class="form-check-input" type="checkbox" id="perfectionist">
+                                <label class="form-check-label" for="perfectionist">
+                                    ¿Es usted autoexigente, perfeccionista?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="nervous_anxious" class="form-check-input" type="checkbox"
+                                    id="nervous_anxious">
+                                <label class="form-check-label" for="nervous_anxious">
+                                    ¿Es usted nerviosa(o) ansiosa (o)?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="muscle_relaxer_tranquilizers_antidepressants" class="form-check-input"
+                                    type="checkbox" id="muscle_relaxer_tranquilizers_antidepressants">
+                                <label class="form-check-label" for="muscle_relaxer_tranquilizers_antidepressants">
+                                    ¿Esta tomando algun tranquilizante, relajante muscular o antidepresivo?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="open_jaw_lock" class="form-check-input" type="checkbox" id="open_jaw_lock">
+                                <label class="form-check-label" for="open_jaw_lock">
+                                    ¿Se ha quedado con la boca trabada sin poder cerrarla?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="bitting_comfortable" class="form-check-input" type="checkbox"
+                                    id="bitting_comfortable">
+                                <label class="form-check-label" for="bitting_comfortable">
+                                    ¿Actualmente siente comoda su forma de morder?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="open_mouth_a_lot" class="form-check-input" type="checkbox"
+                                    id="open_mouth_a_lot">
+                                <label class="form-check-label" for="open_mouth_a_lot">
+                                    ¿Ah tenido problemas cuando abre mucho la boca?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="recent_life_change" class="form-check-input" type="checkbox"
+                                    id="recent_life_change">
+                                <label class="form-check-label" for="recent_life_change">
+                                    ¿Ah tenido algun cambio reciente en su estilo de vida (cambio de estado marital,
+                                    nacimientos, defunciones, cambios de trabajo u otro evento estresante)?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="nervous_tension" class="form-check-input" type="checkbox"
+                                    id="nervous_tension">
+                                <label class="form-check-label" for="nervous_tension">
+                                    ¿Cree que la tension nerviosa le esta agravando su problema articular?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="headache_pains_questionnaire" class="form-check-input" type="checkbox"
+                                    id="headache_pains_questionnaire">
+                                <label class="form-check-label" for="headache_pains_questionnaire">
+                                    ¿Sufre dolores de cabeza?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="bilateral_unilateral_headache" class="form-check-input" type="checkbox"
+                                    id="bilateral_unilateral_headache">
+                                <label class="form-check-label" for="bilateral_unilateral_headache">
+                                    ¿El dolor de cabeza es unilateral? ¿Bilateral?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="pulsating_headache" class="form-check-input" type="checkbox"
+                                    id="pulsating_headache">
+                                <label class="form-check-label" for="pulsating_headache">
+                                    ¿El dolor de cabeza es pulsante? ¿Opresivo? (como un casco que aprieta) ¿Urente?
+                                    (ardor) ¿Electrico?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="migraine" class="form-check-input" type="checkbox" id="migraine">
+                                <label class="form-check-label" for="migraine">
+                                    ¿Sufre de migrañas?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <button class="btn btn-primary" type="submit">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br>
+    </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

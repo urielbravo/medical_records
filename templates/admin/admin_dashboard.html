@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<h1>Admin</h1>
+		</div>
+	</div>
+	<br><br>
+	<div class="row">
+		<div class="col">
+			<h4> Lista de Pacientes:</h4>
+			<table class="table table-striped">
+				<thead style="background-color: #6f42c1; color: #FFFFFF;">
+				<tr>
+					<th scope="col">Nombre</th>
+					<th scope="col">Numero de telefono</th>
+					<th scope="col">Email</th>
+				</tr>
+				</thead>
+				<tbody>
+				{% for patient in patients %}
+				<tr>
+					<th><a href="{% url 'patient_detail' patient.id %}">{{ patient.name }}</a></th>
+					<th>{{ patient.phone_number }}</th>
+					<th>{{ patient.email }}</th>
+				</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,702 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <!-- {{ error }}
+    <h1>Actualizando paciente: {{ patient.name }}</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update</button>
+    </form> -->
+    <div class="container" style="background-color: #e0e0e0;">
+        <div class="row">
+            <div class="col">
+                {% if succes_msg %}
+                    <div class="alert alert-success" role="alert">
+                        {{ succes_msg }}
+                    </div>
+                {% endif %}
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="name" class="form-label">Nombre:</label>
+                            <input id="name" name="name" type="text" class="form-control" value="{{ patient.name }}">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="image" class="form-label">Imagen:</label>
+                            <input id="image" name="image" type="file" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="occupation" class="form-label">Ocupacion:</label>
+                            <input id="occupation" name="occupation" type="text" class="form-control" value="{{ patient.occupation }}">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="phone_number" class="form-label">Tel:</label>
+                            <input id="phone_number" name="phone_number" type="tel" class="form-control" value="{{ patient.phone_number }}">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="address" class="form-label">Domicilio:</label>
+                            <input id="address" name="address" type="text" class="form-control" value="{{ patient.address }}">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="birthday" class="form-label">Fecha de nacimiento:</label>
+                            <input id="birthday" name="birthday" type="date" class="form-control" value="{{ patient.birthday|date:"Y-m-d" }}">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="city_of_birth" class="form-label">Ciudad de nacimiento:</label>
+                            <input id="city_of_birth" name="city_of_birth" type="text" class="form-control" value="{{ patient.city_of_birth }}">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email:</label>
+                            <input id="email" name="email" type="email" class="form-control" value="{{ patient.email }}">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="recommended_by" class="form-label">Recomendado por:</label>
+                            <input id="recommended_by" name="recommended_by" type="text" class="form-control" value="{{ patient.recommended_by }}">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="motive_of_consultancy" class="form-label">Motivo de consulta:</label>
+                            <input id="motive_of_consultancy" name="motive_of_consultancy" type="text"
+                                class="form-control" value="{{ patient.motive_of_consultancy }}">
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <h4 class="text-center">¿Ha tenido alguna vez algo de lo siguiente? (marque los cuadros
+                        correspondientes):</h4>
+                    <br>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="heart_problems" name="heart_problems" {% if patient.heart_problems %} checked {% endif %}>
+                                <label class="form-check-label" for="heart_problems">
+                                    Problemas del corazon
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="epilepsy" name="epilepsy" {% if patient.epilepsy %} checked {% endif %}>
+                                <label class="form-check-label" for="epilepsy">
+                                    Epilepsia
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="high_blood_pressure" name="high_blood_pressure" {% if patient.high_blood_pressure %} checked {% endif %}>
+                                <label class="form-check-label" for="high_blood_pressure">
+                                    Presion sanguinea alta
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="headache" name="headache" {% if patient.headache %} checked {% endif %}>
+                                <label class="form-check-label" for="headache">
+                                    Dolores de cabeza
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="low_blood_pressure" name="low_blood_pressure" {% if patient.low_blood_pressure %} checked {% endif %}>
+                                <label class="form-check-label" for="low_blood_pressure">
+                                    Presion sanguinea baja
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="hepatitis_or_liver_disease" name="hepatitis_or_liver_disease" {% if patient.hepatitis_or_liver_disease %} checked {% endif %}>
+                                <label class="form-check-label" for="hepatitis_or_liver_disease">
+                                    Hepatitis o enfermedades del higado (A, B o C)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="circulatory_problems" name="circulatory_problems" {% if patient.circulatory_problems %} checked {% endif %}>
+                                <label class="form-check-label" for="circulatory_problems">
+                                    Problemas circulatorios
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="cancer" name="cancer" {% if patient.cancer %} checked {% endif %}>
+                                <label class="form-check-label" for="cancer">
+                                    Cancer
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="nervous_problems" name="nervous_problems" {% if patient.nervous_problems %} checked {% endif %}>
+                                <label class="form-check-label" for="nervous_problems">
+                                    Problemas nerviosos
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="psychiatric_treatment" name="psychiatric_treatment" {% if patient.psychiatric_treatment %} checked {% endif %}>
+                                <label class="form-check-label" for="psychiatric_treatment">
+                                    Tratamiento psiquiatrico
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="radiotherapy" name="radiotherapy" {% if patient.radiotherapy %} checked {% endif %}>
+                                <label class="form-check-label" for="radiotherapy">
+                                    Radioterapia
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="chronic_diarrhea" name="chronic_diarrhea" {% if patient.chronic_diarrhea %} checked {% endif %}>
+                                <label class="form-check-label" for="chronic_diarrhea">
+                                    Diarrea cronica
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="artificial_heart_valves" name="artificial_heart_valves" {% if patient.artificial_heart_valves %} checked {% endif %}>
+                                <label class="form-check-label" for="artificial_heart_valves">
+                                    Valvulas de corazon artificiales
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="anesthesia_allergy" name="anesthesia_allergy" {% if patient.anesthesia_allergy %} checked {% endif %}>
+                                <label class="form-check-label" for="anesthesia_allergy">
+                                    Alergias a anestesias
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="recent_weight_loss" name="recent_weight_loss" {% if patient.recent_weight_loss %} checked {% endif %}>
+                                <label class="form-check-label" for="recent_weight_loss">
+                                    Reciente perdida de peso
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="medicine_allergy" name="medicine_allergy" {% if patient.medicine_allergy %} checked {% endif %}>
+                                <label class="form-check-label" for="medicine_allergy">
+                                    Alergias a medicinas
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="diabetes" name="diabetes" {% if patient.diabetes %} checked {% endif %}>
+                                <label class="form-check-label" for="diabetes">
+                                    Diabetes
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="general_allergies" name="general_allergies" {% if patient.general_allergies %} checked {% endif %}>
+                                <label class="form-check-label" for="general_allergies">
+                                    Alergias generales
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="respiratory_disease" name="respiratory_disease" {% if patient.respiratory_disease %} checked {% endif %}>
+                                <label class="form-check-label" for="respiratory_disease">
+                                    Enfermedades respiratorias
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="blood_disease" name="blood_disease" {% if patient.blood_disease %} checked {% endif %}>
+                                <label class="form-check-label" for="blood_disease">
+                                    Enfermedades de la sangre
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="arthritis" name="arthritis" {% if patient.arthritis %} checked {% endif %}>
+                                <label class="form-check-label" for="arthritis">
+                                    Artritis
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="hiv_aids" name="hiv_aids" {% if patient.hiv_aids %} checked {% endif %}>
+                                <label class="form-check-label" for="hiv_aids">
+                                    VIH/SIDA
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="drug_allergy" name="drug_allergy" {% if patient.drug_allergy %} checked {% endif %}>
+                                <label class="form-check-label" for="drug_allergy">
+                                    ¿Tiene o ha tenido alergia a algun medicamento?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="which_drug_allergy" class="form-label">Si la respuesta es si, ¿A que?</label>
+                            <input type="text" class="form-control" id="which_drug_allergy" name="which_drug_allergy" value="{{ patient.which_drug_allergy }}">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="taking_medication" name="taking_medication" {% if patient.taking_medication %} checked {% endif %}>
+                                <label class="form-check-label" for="taking_medication">
+                                    ¿Esta tomando algun medicamento?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="which_medication" class="form-label">Si la respuesta es si, ¿Cual?</label>
+                            <input type="text" class="form-control" id="which_medication" name="which_medication" value="{{ patient.which_medication }}">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="under_medical_care" name="under_medical_care" {% if patient.under_medical_care %} checked {% endif %}>
+                                <label class="form-check-label" for="under_medical_care">
+                                    ¿Actualmente esta usted bajo cuidado medico?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="why_under_medical_care" class="form-label">¿Por que?</label>
+                            <input type="text" class="form-control" id="why_under_medical_care" name="why_under_medical_care" value="{{ patient.why_under_medical_care }}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="might_be_pregnant" name="might_be_pregnant" {% if patient.might_be_pregnant %} checked {% endif %}>
+                                <label class="form-check-label" for="might_be_pregnant">
+                                    ¿Sospecha que esta embarazada?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="any_other_thing" class="form-label">¿Alguna otra cosa que debamos saber?</label>
+                            <input type="text" class="form-control" id="any_other_thing" name="any_other_thing" value="{{ patient.any_other_thing }}">
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <h4 class="text-center">Cuestionario para paciente</h4>
+                    <br>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="orthodontics_brackets" class="form-check-input" type="checkbox"
+                                    id="orthodontics_brackets" {% if patient.orthodontics_brackets %} checked {% endif %}>
+                                <label class="form-check-label" for="orthodontics_brackets">
+                                    ¿A tenido tratamiento de ortodoncia (frenos)?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="bad_bite" class="form-check-input" type="checkbox"
+                                    id="bad_bite" {% if patient.bad_bite %} checked {% endif %}>
+                                <label class="form-check-label" for="bad_bite">
+                                    ¿A tenido tratamiento por mala mordida?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="facial_pain" class="form-check-input" type="checkbox" id="facial_pain" {% if patient.facial_pain %} checked {% endif %}>
+                                <label class="form-check-label" for="facial_pain">
+                                    ¿A tenido tratamiento por problemas de dolor de cara?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="face_jaw_hit" class="form-check-input" type="checkbox" id="face_jaw_hit" {% if patient.face_jaw_hit %} checked {% endif %}>
+                                <label class="form-check-label" for="face_jaw_hit">
+                                    ¿A recibido algun golpe fuerte en la cara o mandibula?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="comb_pain" class="form-check-input" type="checkbox" id="comb_pain" {% if patient.comb_pain %} checked {% endif %}>
+                                <label class="form-check-label" for="comb_pain">
+                                    ¿Siente dolor al peinarse?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="hard_close_teeth" class="form-check-input" type="checkbox"
+                                    id="hard_close_teeth" {% if patient.hard_close_teeth %} checked {% endif %}>
+                                <label class="form-check-label" for="hard_close_teeth">
+                                    ¿Aprieta los dientes durante el dia?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="eye_ear_face_pain" class="form-check-input" type="checkbox"
+                                    id="eye_ear_face_pain" {% if patient.eye_ear_face_pain %} checked {% endif %}>
+                                <label class="form-check-label" for="eye_ear_face_pain">
+                                    ¿Tiene dolor o malestar alrededor de los ojos, oidos u otra parte de la cara?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="neck_stiffness" class="form-check-input" type="checkbox"
+                                    id="neck_stiffness" {% if patient.neck_stiffness %} checked {% endif %}>
+                                <label class="form-check-label" for="neck_stiffness">
+                                    ¿Sufre frecuentemente de tension, dolor o rigidez en los musculos del cuello?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="teeth_grind_sleep" class="form-check-input" type="checkbox"
+                                    id="teeth_grind_sleep" {% if patient.teeth_grind_sleep %} checked {% endif %}>
+                                <label class="form-check-label" for="teeth_grind_sleep">
+                                    ¿Le han dicho alguna vez que rechina o hace ruido con los dientes al dormir?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="wake_teeth_pain" class="form-check-input" type="checkbox"
+                                    id="wake_teeth_pain" {% if patient.wake_teeth_pain %} checked {% endif %}>
+                                <label class="form-check-label" for="wake_teeth_pain">
+                                    ¿Despierta con sensibilidad en sus dientes y/o maxilares?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="hand_fingers_numbness" class="form-check-input" type="checkbox"
+                                    id="hand_fingers_numbness" {% if patient.hand_fingers_numbness %} checked {% endif %}>
+                                <label class="form-check-label" for="hand_fingers_numbness">
+                                    ¿Se le duermen los dedos de las manos?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="ear_noise" class="form-check-input" type="checkbox" id="ear_noise" {% if patient.ear_noise %} checked {% endif %}>
+                                <label class="form-check-label" for="ear_noise">
+                                    ¿Ah tenido cambios en la audicion(oido tapado) o ruidos en los odios (un silbido)?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="dizziness_and_nausea" class="form-check-input" type="checkbox"
+                                    id="dizziness_and_nausea" {% if patient.dizziness_and_nausea %} checked {% endif %}>
+                                <label class="form-check-label" for="dizziness_and_nausea">
+                                    ¿Mareos y/ vertigo?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="temporomandibular_joint_pain" class="form-check-input" type="checkbox"
+                                    id="temporomandibular_joint_pain" {% if patient.temporomandibular_joint_pain %} checked {% endif %}>
+                                <label class="form-check-label" for="temporomandibular_joint_pain">
+                                    ¿Ah tenido alguna vez dolor en la articulacion temporomandibular (de la mandibula)?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="mandibular_joint_click_noise" class="form-check-input" type="checkbox"
+                                    id="mandibular_joint_click_noise" {% if patient.mandibular_joint_click_noise %} checked {% endif %}>
+                                <label class="form-check-label" for="mandibular_joint_click_noise">
+                                    ¿Ah oido un "clic" o tronido en sus articulaciones mandibulares?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="mandibular_joint_treatment" class="form-check-input" type="checkbox"
+                                    id="mandibular_joint_treatment" {% if patient.mandibular_joint_treatment %} checked {% endif %}>
+                                <label class="form-check-label" for="mandibular_joint_treatment">
+                                    ¿Ah tenido tenido tratamiento por problemas de articulacion mandibular?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="fibromyalgia_diagnosis" class="form-check-input" type="checkbox"
+                                    id="fibromyalgia_diagnosis" {% if patient.fibromyalgia_diagnosis %} checked {% endif %}>
+                                <label class="form-check-label" for="fibromyalgia_diagnosis">
+                                    ¿Se le ha diagnosticado fibromialgia?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="sleep_disturbance" class="form-check-input" type="checkbox"
+                                    id="sleep_disturbance" {% if patient.sleep_disturbance %} checked {% endif %}>
+                                <label class="form-check-label" for="sleep_disturbance">
+                                    ¿Sufre de alteraciones de sueño?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="wake_up_tired" class="form-check-input" type="checkbox" id="wake_up_tired" {% if patient.wake_up_tired %} checked {% endif %}>
+                                <label class="form-check-label" for="wake_up_tired">
+                                    ¿Despierta cansado?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="aspirin_or_other_analgesic" class="form-check-input" type="checkbox"
+                                    id="aspirin_or_other_analgesic" {% if patient.aspirin_or_other_analgesic %} checked {% endif %}>
+                                <label class="form-check-label" for="aspirin_or_other_analgesic">
+                                    ¿Toma aspirina o algun otro analgesico de forma frecuente?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="nail_tongue_lips_bite" class="form-check-input" type="checkbox"
+                                    id="nail_tongue_lips_bite" {% if patient.nail_tongue_lips_bite %} checked {% endif %}>
+                                <label class="form-check-label" for="nail_tongue_lips_bite">
+                                    ¿Se come las uñas o se muerde la lengua o los labios?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="chew_gum" class="form-check-input" type="checkbox" id="chew_gum" {% if patient.chew_gum %} checked {% endif %}>
+                                <label class="form-check-label" for="chew_gum">
+                                    ¿Mastica chicle frecuentemente?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="perfectionist" class="form-check-input" type="checkbox" id="perfectionist" {% if patient.perfectionist %} checked {% endif %}>
+                                <label class="form-check-label" for="perfectionist">
+                                    ¿Es usted autoexigente, perfeccionista?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="nervous_anxious" class="form-check-input" type="checkbox"
+                                    id="nervous_anxious" {% if patient.nervous_anxious %} checked {% endif %}>
+                                <label class="form-check-label" for="nervous_anxious">
+                                    ¿Es usted nerviosa(o) ansiosa (o)?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="muscle_relaxer_tranquilizers_antidepressants" class="form-check-input"
+                                    type="checkbox" id="muscle_relaxer_tranquilizers_antidepressants" {% if patient.muscle_relaxer_tranquilizers_antidepressants %} checked {% endif %}>
+                                <label class="form-check-label" for="muscle_relaxer_tranquilizers_antidepressants">
+                                    ¿Esta tomando algun tranquilizante, relajante muscular o antidepresivo?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="open_jaw_lock" class="form-check-input" type="checkbox" id="open_jaw_lock" {% if patient.open_jaw_lock %} checked {% endif %}>
+                                <label class="form-check-label" for="open_jaw_lock">
+                                    ¿Se ha quedado con la boca trabada sin poder cerrarla?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="bitting_comfortable" class="form-check-input" type="checkbox"
+                                    id="bitting_comfortable" {% if patient.bitting_comfortable %} checked {% endif %}>
+                                <label class="form-check-label" for="bitting_comfortable">
+                                    ¿Actualmente siente comoda su forma de morder?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="open_mouth_a_lot" class="form-check-input" type="checkbox"
+                                    id="open_mouth_a_lot" {% if patient.open_mouth_a_lot %} checked {% endif %}>
+                                <label class="form-check-label" for="open_mouth_a_lot">
+                                    ¿Ah tenido problemas cuando abre mucho la boca?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="recent_life_change" class="form-check-input" type="checkbox"
+                                    id="recent_life_change" {% if patient.recent_life_change %} checked {% endif %}>
+                                <label class="form-check-label" for="recent_life_change">
+                                    ¿Ah tenido algun cambio reciente en su estilo de vida (cambio de estado marital,
+                                    nacimientos, defunciones, cambios de trabajo u otro evento estresante)?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="nervous_tension" class="form-check-input" type="checkbox"
+                                    id="nervous_tension" {% if patient.nervous_tension %} checked {% endif %}>
+                                <label class="form-check-label" for="nervous_tension">
+                                    ¿Cree que la tension nerviosa le esta agravando su problema articular?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="headache_pains_questionnaire" class="form-check-input" type="checkbox"
+                                    id="headache_pains_questionnaire" {% if patient.headache_pains_questionnaire %} checked {% endif %}>
+                                <label class="form-check-label" for="headache_pains_questionnaire">
+                                    ¿Sufre dolores de cabeza?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="bilateral_unilateral_headache" class="form-check-input" type="checkbox"
+                                    id="bilateral_unilateral_headache" {% if patient.bilateral_unilateral_headache %} checked {% endif %}>
+                                <label class="form-check-label" for="bilateral_unilateral_headache">
+                                    ¿El dolor de cabeza es unilateral? ¿Bilateral?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="pulsating_headache" class="form-check-input" type="checkbox"
+                                    id="pulsating_headache" {% if patient.pulsating_headache %} checked {% endif %}>
+                                <label class="form-check-label" for="pulsating_headache">
+                                    ¿El dolor de cabeza es pulsante? ¿Opresivo? (como un casco que aprieta) ¿Urente?
+                                    (ardor) ¿Electrico?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input name="migraine" class="form-check-input" type="checkbox" id="migraine" {% if patient.migraine %} checked {% endif %}>
+                                <label class="form-check-label" for="migraine">
+                                    ¿Sufre de migrañas?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <button class="btn btn-primary" type="submit">Editar perfil</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br>
+    </div>
+{% endblock %}

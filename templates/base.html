@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <title>Excelencia en ortodoncia</title>
+    <style>
+        div#general-info-col>p {
+            margin-bottom: 0.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid" style="background-color: #6f42c1;">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-light text-decoration-none">
+                <img class="bi me-2"
+                    src="https://png.pngtree.com/png-clipart/20190924/original/pngtree-dental-logo-design-creative-dentist-logo-dental-clinic-creative-company-png-image_4817208.jpg"
+                    alt="tooth" width="50" height="50">
+                <a href="{% url 'admin' %}" style="text-decoration:none; color:white"><span
+                        class="fs-4">Administrador</span></a>
+            </div>
+            {% if user.is_authenticated %}
+            <ul class="nav nav-pills">
+                <li class="nav-item"><span class="nav-link text-light">Hola {{ user.username }}!</span></li>
+                <li class="nav-item">
+                    <form action="{% url 'logoutuser' %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-light me-2">Logout</button>
+                    </form>
+                </li>
+            </ul>
+            {% else %}
+            {% endif %}
+        </header>
+    </div>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

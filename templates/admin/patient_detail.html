@@ -1,0 +1,636 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row text-center">
+    <div class="col-10">
+        <h1>Perfil de paciente</h1>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-6">
+        <img class="img-fluid mb-3" src="{{ patient.image.url }}" alt="Profile" style="max-width: 50%; height:auto;">
+        <h3>{{ patient.name }}</h3>
+        <div class="row">
+            <div class="col-3">
+                <a class="btn btn-success" href="{% url 'patient_update' patient.id %}" role="button">Editar</a>
+            </div>
+            <div class="col-3">
+                <form action="{% url 'patient_delete' patient.id %}" method="POST">
+                {% csrf_token %}
+                <button class="btn btn-danger" type="submit">Eliminar</button>
+                </form>
+            </div>
+        </div>
+            
+            
+    
+    </div>
+    <div id="general-info-col" class="col-6">
+        <h3>Informacion general</h3>
+        <p><b>Ocupacion:</b> {{ patient.occupation }}</p>
+        <p><b>Telefono:</b> {{ patient.phone_number }}</p>
+        <p><b>Direccion:</b> {{ patient.address }}</p>
+        <p><b>Fecha de nacimiento:</b> {{ patient.birthday }}</p>
+        <p><b>Ciudad de nacimiento:</b> {{ patient.city_of_birth }}</p>
+        <p><b>Email:</b> {{ patient.email }}</p>
+        <p><b>Recomendado por:</b> {{ patient.recommended_by }}</p>
+        <p><b>Motivo de consulta:</b> {{ patient.motive_of_consultancy }}</p>
+    </div>
+</div>
+<br>
+<hr>
+<div class="row">
+    <div class="col-12">
+        <h5>Ha tenido alguna vez algo de lo siguiente? (Marque los cuadros correspondientes)</h5>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-6">
+        <span>Problemas del corazon: {% if patient.heart_problems %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>Epilepsia: {% if patient.epilepsy %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>Presion alta: {% if patient.high_blood_pressure %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>Dolores de cabeza: {% if patient.headache %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>Presion sanguinea baja: {% if patient.low_blood_pressure %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>Hepatitis o enfermedades del higado (A, B o C): {% if patient.hepatitis_or_liver_disease %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>Problemas circulatorios: {% if patient.circulatory_problems %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>Cancer: {% if patient.cancer %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>Problemas nerviosos: {% if patient.nervous_problems %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>Tratamiento psiquiatrico: {% if patient.psychiatric_treatment %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>Radioterapia: {% if patient.radiotherapy %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>Diarrea cronica: {% if patient.chronic_diarrhea %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>Valvulas de corazon artificiales: {% if patient.artificial_heart_valves %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>Alergias a anestesias: {% if patient.anesthesia_allergy %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>Reciente perdida de peso: {% if patient.recent_weight_loss %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>Alergias a medicinas: {% if patient.medicine_allergy %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>Diabetes: {% if patient.diabetes %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>Alergias generales: {% if patient.general_allergies %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>Enfermedades respiratorias: {% if patient.respiratory_disease %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>Enfermedades de la sangre: {% if patient.blood_disease %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>Artritis: {% if patient.arthritis %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>VIH/SIDA: {% if patient.hiv_aids %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<br>
+<hr><br>
+<div class="row">
+    <div class="col-12">
+        <span>¿Tiene o ha tenido alergia a algun medicamento? {% if patient.drug_allergy %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row mb-5">
+    <label class="col-3 col-form-label" for="which_drug_allergy">Si la respuesta es si, ¿A que?</label>
+    <div class="col-9">
+        <input id="which_drug_allergy" readonly type="text" class="form-control"
+            value="{% if patient.which_drug_allergy %} {{ patient.which_drug_allergy }} {% endif %}">
+    </div>
+</div>
+<!--  -->
+<div class="row">
+    <div class="col-12">
+        <span>¿Esta tomando algun medicamento? {% if patient.taking_medication %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row mb-5">
+    <label class="col-3 col-form-label" for="which_drug_allergy">Si la respuesta es si, ¿Cual?</label>
+    <div class="col-9">
+        <input id="which_drug_allergy" readonly type="text" class="form-control"
+            value="{% if patient.which_medication %} {{ patient.which_medication }} {% endif %}">
+    </div>
+</div>
+<!--  -->
+<div class="row">
+    <div class="col-12">
+        <span>¿Actualmente esta usted bajo cuidado medico? {% if patient.under_medical_care %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row mb-5">
+    <label class="col-3 col-form-label" for="which_drug_allergy">¿Por que?</label>
+    <div class="col-9">
+        <input id="which_drug_allergy" readonly type="text" class="form-control"
+            value="{% if patient.why_under_medical_care %} {{ patient.why_under_medical_care }} {% endif %}">
+    </div>
+</div>
+<!--  -->
+<div class="row mb-5">
+    <div class="col-12">
+        <span>¿Sospecha que esta embarazada? {% if patient.might_be_pregnant %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<!--  -->
+<div class="row mb-5">
+    <label class="col-3 col-form-label" for="which_drug_allergy">¿Alguna otra cosa que debamos saber?</label>
+    <div class="col-9">
+        <input id="which_drug_allergy" readonly type="text" class="form-control"
+            value="{% if patient.any_other_thing %} {{ patient.any_other_thing }} {% endif %}">
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-12">
+        <h5>Cuestionario para el paciente</h5>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>¿A tenido tratamiento de ortodoncia (frenos)? {% if patient.orthodontics_brackets %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>¿A tenido tratamiento por mala mordida? {% if patient.bad_bite %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>¿A tenido tratamiento por problemas de dolor de cara? {% if patient.facial_pain %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>¿A recibido algun golpe fuerte en la cara o mandibula? {% if patient.face_jaw_hit %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>¿Siente dolor al peinarse? {% if patient.comb_pain %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>¿Aprieta los dientes durante el dia? {% if patient.hard_close_teeth %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>¿Tiene dolor o malestar alrededor de los ojos, oidos u otra parte de la cara? {% if patient.eye_ear_face_pain %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>¿Sufre frecuentemente de tension, dolor o rigidez en los musculos del cuello? {% if patient.neck_stiffness %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>¿Le han dicho alguna vez que rechina o hace ruido con los dientes al dormir? {% if patient.teeth_grind_sleep %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>¿Despierta con sensibilidad en sus dientes y/o maxilares? {% if patient.wake_teeth_pain %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>¿Se le duermen los dedos de las manos? {% if patient.hand_fingers_numbness %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>¿Ah tenido cambios en la audicion(oido tapado) o ruidos en los odios (un silbido)? {% if patient.ear_noise %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>¿Mareos y/ vertigo? {% if patient.dizziness_and_nausea %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>¿Ah tenido alguna vez dolor en la articulacion temporomandibular (de la mandibula)? {% if patient.temporomandibular_joint_pain %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>¿Ah oido un "clic" o tronido en sus articulaciones mandibulares? {% if patient.mandibular_joint_click_noise %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>¿Ah tenido tenido tratamiento por problemas de articulacion mandibular? {% if patient.mandibular_joint_treatment %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>¿Se le ha diagnosticado fibromialgia? {% if patient.fibromyalgia_diagnosis %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>¿Sufre de alteraciones de sueño? {% if patient.sleep_disturbance %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>¿Despierta cansado? {% if patient.wake_up_tired %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>¿Toma aspirina o algun otro analgesico de forma frecuente? {% if patient.aspirin_or_other_analgesic %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>¿Se come las uñas o se muerde la lengua o los labios? {% if patient.nail_tongue_lips_bite %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>¿Mastica chicle frecuentemente? {% if patient.chew_gum %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>¿Es usted autoexigente, perfeccionista? {% if patient.perfectionist %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>¿Es usted nerviosa(o) ansiosa (o)? {% if patient.nervous_anxious %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>¿Esta tomando algun tranquilizante, relajante muscular o antidepresivo? {% if patient.muscle_relaxer_tranquilizers_antidepressants %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>¿Se ha quedado con la boca trabada sin poder cerrarla? {% if patient.open_jaw_lock %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>¿Actualmente siente comoda su forma de morder? {% if patient.bitting_comfortable %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>¿Ah tenido problemas cuando abre mucho la boca? {% if patient.open_mouth_a_lot %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>¿Ah tenido algun cambio reciente en su estilo de vida (cambio de estado marital,
+            nacimientos, defunciones, cambios de trabajo u otro evento estresante)? {% if patient.recent_life_change %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>¿Cree que la tension nerviosa le esta agravando su problema articular? {% if patient.nervous_tension %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>¿Sufre dolores de cabeza? {% if patient.headache_pains_questionnaire %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>¿El dolor de cabeza es unilateral? ¿Bilateral? {% if patient.bilateral_unilateral_headache %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <span>¿El dolor de cabeza es pulsante? ¿Opresivo? (como un casco que aprieta) ¿Urente?
+            (ardor) ¿Electrico? {% if patient.pulsating_headache %}
+            <i class="bi bi-check-square-fill text-success" style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+    <div class="col-6">
+        <span>¿Sufre de migrañas? {% if patient.migraine %}
+            <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+            {% else %}
+            <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<br><hr><br>
+{% endblock %}
