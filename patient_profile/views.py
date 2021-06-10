@@ -37,7 +37,6 @@ def create_patien_profile(request):
             form = PatientProfileForm(request.POST)
             form.save()
             return render(request, 'patient_profile/patient_form.html', {'succes_msg': "perfil creado exitosamente! Gracias!"})
-            # return redirect('patien_profile', {'succes_msg': "perfil creado exitosamente! Gracias!"})
         except ValueError:
             return render(request, 'patient_profile/patient_form.html', {'form': PatientProfileForm, 'error': 'Bad Data passes in'})
 
