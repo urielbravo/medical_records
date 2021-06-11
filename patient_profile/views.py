@@ -28,12 +28,11 @@ def logout_user(request):
 
 
 # all the other regular functions
-def create_patien_profile(request):
+def create_patient_profile(request):
     if request.method == 'GET':
         return render(request, 'patient_profile/patient_form.html', {'form': PatientProfileForm})
     else:
         try:
-            print(request.POST)
             form = PatientProfileForm(request.POST)
             form.save()
             return render(request, 'patient_profile/patient_form.html', {'succes_msg': "perfil creado exitosamente! Gracias!"})

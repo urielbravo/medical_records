@@ -3,14 +3,13 @@
 {% block content %}
 <div class="row text-center">
     <div class="col-10">
-        <h1>Perfil de paciente</h1>
+        <h1>Perfil de: {{ patient.name }}</h1>
     </div>
 </div>
 <br>
 <div class="row">
-    <div class="col-6">
+    <div class="col-5 ">
         <img class="img-fluid mb-3" src="{{ patient.image.url }}" alt="Profile" style="max-width: 50%; height:auto;">
-        <h3>{{ patient.name }}</h3>
         <div class="row">
             <div class="col-3">
                 <a class="btn btn-success" href="{% url 'patient_update' patient.id %}" role="button">Editar</a>
@@ -22,11 +21,8 @@
                 </form>
             </div>
         </div>
-            
-            
-    
     </div>
-    <div id="general-info-col" class="col-6">
+    <div id="general-info-col" class="col-5">
         <h3>Informacion general</h3>
         <p><b>Ocupacion:</b> {{ patient.occupation }}</p>
         <p><b>Telefono:</b> {{ patient.phone_number }}</p>
@@ -36,6 +32,29 @@
         <p><b>Email:</b> {{ patient.email }}</p>
         <p><b>Recomendado por:</b> {{ patient.recommended_by }}</p>
         <p><b>Motivo de consulta:</b> {{ patient.motive_of_consultancy }}</p>
+    </div>
+    <div class="col-2 text-center">
+        <h3>Examenes</h3>
+        <div class="row mb-4">
+            <div class="col-12">
+                <a class="btn btn-primary" href="#" role="button">Mapeo del dolor</a>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-12">
+                <a class="btn btn-warning" href="#" role="button">Ortodontico</a>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-12">
+                <a class="btn btn-danger" href="#" role="button">Laxitud</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <a class="btn btn-success" href="{% url 'list_payment' patient.id %}" role="button">Pagos</a>
+            </div>
+        </div>
     </div>
 </div>
 <br>

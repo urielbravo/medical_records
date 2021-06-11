@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Registrar pago de paciente:</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="procedure_description" class="form-label">Descripcion del procedimiento:</label>
+            <input id="procedure_description" name="procedure_description" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="amount" class="form-label">Pago:</label>
+            <input id="amount" name="amount" type="number" class="form-control" step="0.01">
+        </div>
+    </div>
+    <input id="id_patient" name="patient" type="hidden" value="{{ patient.id }}">
+    <button class="btn btn-primary" type="submit">Registrar pago</button>
+</form>
+{% endblock %}
