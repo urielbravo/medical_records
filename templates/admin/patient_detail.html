@@ -15,12 +15,34 @@
                 <a class="btn btn-success" href="{% url 'patient_update' patient.id %}" role="button">Editar</a>
             </div>
             <div class="col-3">
-                <form action="{% url 'patient_delete' patient.id %}" method="POST">
-                {% csrf_token %}
-                <button class="btn btn-danger" type="submit">Eliminar</button>
-                </form>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-server-{{patient.id}}">
+                    Borrar
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="delete-server-{{patient.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Borrar?</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Atencion!</p>
+                                <p>esta apunto de borrar el paciente</p>
+                                <p>nombre: {{ patient.name }}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <form action="{% url 'patient_delete' patient.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn btn-danger" type="submit">Eliminar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+            </div>
     </div>
     <div id="general-info-col" class="col-5">
         <h3>Informacion general</h3>
@@ -42,7 +64,7 @@
         </div>
         <div class="row mb-4">
             <div class="col-12">
-                <a class="btn btn-warning" href="#" role="button">Ortodontico</a>
+                <a class="btn btn-warning" href="{% url 'list_orthodontic' patient.id %}" role="button">Ortodontico</a>
             </div>
         </div>
         <div class="row mb-4">

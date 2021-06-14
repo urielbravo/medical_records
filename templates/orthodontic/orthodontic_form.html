@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+    {% block content %}
+
+    <div class="row">
+        <div class="col">
+            {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+            <h1>Nuevo examen ortodontico:</h1>
+        </div>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="facial_profile" class="form-label">Perfil facial:</label>
+                <input id="facial_profile" name="facial_profile" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="molar_class" class="form-label">Clase molar:</label>
+                <input id="molar_class" name="molar_class" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="canine_class" class="form-label">Clase canina:</label>
+                <input id="canine_class" name="canine_class" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="crossbite" class="form-label">Mordida cruzada:</label>
+                <input id="crossbite" name="crossbite" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <label for="habits" class="form-label">Habitos:</label>
+                <input id="habits" name="habits" type="text" class="form-control">
+            </div>
+        </div>
+        <input id="id_patient" name="patient" type="hidden" value="{{ patient.id }}">
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary" type="submit">Registrar</button>
+            </div>
+        </div>
+    </form>
+    {% endblock %}

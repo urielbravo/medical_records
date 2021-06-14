@@ -73,4 +73,9 @@ def patient_delete(request, patient_pk):
     patient = get_object_or_404(PatientProfile, pk=patient_pk)
     if request.method == 'POST':
         patient.delete()
-        return redirect('admin')
+        patients = PatientProfile.objects.all()
+        context = {
+            'patients': patients,
+            'user_deleted_msg': "User deleted"
+        }
+        return render(request, 'admin/admin_dashboard.html', context)

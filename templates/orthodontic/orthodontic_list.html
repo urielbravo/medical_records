@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            {% if succes_msg %}
+            <div class="alert alert-success" role="alert">
+                {{ succes_msg }}
+            </div>
+            {% elif deleted_msg %}
+            <div class="alert alert-success" role="alert">
+                {{ deleted_msg }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h1>Historial de: {{ patient.name }}</h1>
+        </div>
+        <div class="col align-self-center text-end">
+            <a class="btn btn-success" href="{% url 'create_orthodontic' patient.id %}" role="button">Registrar nuevo
+                examen ortodontico</a>
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col">
+            <h4>Examenes ortodonticos:</h4>
+            <table class="table table-striped">
+                <thead style="background-color: #6f42c1; color: #FFFFFF;">
+                    <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Perfil facial</th>
+                        <th scope="col">Clase molar</th>
+                        <th scope="col">Clase caninca</th>
+                        <th scope="col">Mordida cruzada</th>
+                        <th scope="col">Habitos</th>
+                        <th cope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for orthodontic in patient_orthodontics %}
+                    <tr>
+                        <th>{% language 'es' %}{{ orthodontic.created_at }}{% endlanguage %}</th>
+                        <th>{{ orthodontic.facial_profile }}</th>
+                        <th>{{ orthodontic.molar_class }}</th>
+                        <th>{{ orthodontic.canine_class }}</th>
+                        <th>{{ orthodontic.crossbite }}</th>
+                        <th>{{ orthodontic.habits }}</th>
+                        <th>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#delete-server-{{orthodontic.id}}">
+                                Borrar
+                            </button>
+                        </th>
+                    </tr>
+                    <!-- Modal -->
+                    <div class="modal fade" id="delete-server-{{orthodontic.id}}" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Borrar?</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Atencion!</p>
+                                    <p>esta apunto de borrar el examen ortodontico</p>
+                                    <p>perfil facial: {{orthodontic.facial_profile }}</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <form action="{% url 'delete_orthodontic' orthodontic.id patient.id %}"
+                                        method="POST">
+                                        {% csrf_token %}
+                                        <button class="btn btn-danger" type="submit">Eliminar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
