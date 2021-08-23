@@ -28,8 +28,11 @@ urlpatterns = [
     path('payment/delete/<int:payment_pk>/<int:patient_pk>/', payments_views.delete_payment, name='delete_payment'),
     path('payment/list/', payments_views.all_payments, name='all_payments'),
 
-    #orthodontics urls
+    # Orthodontics urls
     path('orthdontics/', include('orthodontic.urls')),
+
+    # Laxity urls
+    path('laxity/', include('laxity.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

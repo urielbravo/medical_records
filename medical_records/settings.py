@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'patient_profile',
     'payments',
     'orthodontic',
+    'laxity',
 ]
 
 MIDDLEWARE = [

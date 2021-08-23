@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            {% if succes_msg %}
+            <div class="alert alert-success" role="alert">
+                {{ succes_msg }}
+            </div>
+            {% elif deleted_msg %}
+            <div class="alert alert-success" role="alert">
+                {{ deleted_msg }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h1>Tests de laxitud de  {{ patient.name }}</h1>
+        </div>
+        <div class="col align-self-center text-end">
+            <a class="btn btn-success" href="{% url 'create_laxity' patient.id %}" role="button">Nuevo
+                tests de laxitud</a>
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col">
+            <h4>Tests de laxitud:</h4>
+            <table class="table table-striped">
+                <thead style="background-color: #6f42c1; color: #FFFFFF;">
+                    <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Diagnostico</th>
+                        <th scope="col">Plan de tratamiento</th>
+                        <th scope="col">Presupuesto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for laxity in patient_laxity_studies %}
+                    <tr>
+                        <th>{% language 'es' %}{{ laxity.created_at }}{% endlanguage %}</th>
+                        <th>{{ laxity.diagnose }}</th>
+                        <th>{{ laxity.treatment_plan }}</th>
+                        <th>{{ laxity.budget }}</th>
+                        <th>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#delete-server-{{orthodontic.id}}">
+                                Borrar
+                            </button>
+                        </th>
+                    </tr>
+                    <!-- Modal -->
+                    <div class="modal fade" id="delete-server-{{orthodontic.id}}" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Borrar?</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Atencion!</p>
+                                    <p>esta apunto de borrar el Test de Laxitud</p>
+                                    <p>perfil facial: {{patient_laxity_studies.diagnose }}</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <form action="{% url 'delete_orthodontic' orthodontic.id patient.id %}"
+                                        method="POST">
+                                        {% csrf_token %}
+                                        <button class="btn btn-danger" type="submit">Eliminar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
