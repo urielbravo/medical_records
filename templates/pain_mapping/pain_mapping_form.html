@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+    {% block content %}
+
+    <div class="row">
+        <div class="col">
+            {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+            <h1>Nuevo examen de mapeo del dolor:</h1>
+        </div>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="row mb-3">
+            <div class="row mb-3">
+                <div class="col"><span>Lado Derecho</span></div>
+                <div class="col text-end"><span>Lado Izquierdo</span></div>
+            </div>
+            <div class="col-md-2">
+                <label for="right_side_pain_1" class="form-label">Dolor 1:</label>
+                <input id="right_side_pain_1" name="right_side_pain_1" type="number" class="form-control">
+            </div>
+            <div class="col-md-2 offset-md-8">
+                <label for="left_side_pain_1" class="form-label">Dolor 1:</label>
+                <input id="left_side_pain_1" name="left_side_pain_1" type="number" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-2">
+                <label for="right_side_pain_2" class="form-label">Dolor 2:</label>
+                <input id="right_side_pain_2" name="right_side_pain_2" type="number" class="form-control">
+            </div>
+            <div class="col-md-2 offset-md-8">
+                <label for="left_side_pain_2" class="form-label">Dolor 2:</label>
+                <input id="left_side_pain_2" name="left_side_pain_2" type="number" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-2">
+                <label for="right_side_pain_3" class="form-label">Dolor 3:</label>
+                <input id="right_side_pain_3" name="right_side_pain_3" type="number" class="form-control">
+            </div>
+            <div class="col-md-2 offset-md-8">
+                <label for="left_side_pain_3" class="form-label">Dolor 3:</label>
+                <input id="left_side_pain_3" name="left_side_pain_3" type="number" class="form-control">
+            </div>
+        </div>        
+        <div class="row mb-3">
+            <div class="col-md-2">
+                <label for="right_side_pain_4" class="form-label">Dolor 4:</label>
+                <input id="right_side_pain_4" name="right_side_pain_4" type="number" class="form-control">
+            </div>
+            <div class="col-md-2 offset-md-8">
+                <label for="left_side_pain_4" class="form-label">Dolor 4:</label>
+                <input id="left_side_pain_4" name="left_side_pain_4" type="number" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-2">
+                <label for="right_side_pain_5" class="form-label">Dolor 5:</label>
+                <input id="right_side_pain_5" name="right_side_pain_5" type="number" class="form-control">
+            </div>
+            <div class="col-md-2 offset-md-8">
+                <label for="left_side_pain_5" class="form-label">Dolor 5:</label>
+                <input id="left_side_pain_5" name="left_side_pain_5" type="number" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-2">
+                <label for="right_side_pain_6" class="form-label">Dolor 6:</label>
+                <input id="right_side_pain_6" name="right_side_pain_6" type="number" class="form-control">
+            </div>
+            <div class="col-md-2 offset-md-8">
+                <label for="left_side_pain_6" class="form-label">Dolor 6:</label>
+                <input id="left_side_pain_6" name="left_side_pain_6" type="number" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-2">
+                <label for="right_side_pain_7" class="form-label">Dolor 7:</label>
+                <input id="right_side_pain_7" name="right_side_pain_7" type="number" class="form-control">
+            </div>
+            <div class="col-md-2 offset-md-8">
+                <label for="left_side_pain_7" class="form-label">Dolor 7:</label>
+                <input id="left_side_pain_7" name="left_side_pain_7" type="number" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-2">
+                <label for="right_side_pain_8" class="form-label">Dolor 8:</label>
+                <input id="right_side_pain_8" name="right_side_pain_8" type="number" class="form-control">
+            </div>
+            <div class="col-md-2 offset-md-8">
+                <label for="left_side_pain_8" class="form-label">Dolor 8:</label>
+                <input id="left_side_pain_8" name="left_side_pain_8" type="number" class="form-control">
+            </div>
+        </div>
+        <input id="id_patient" name="patient" type="hidden" value="{{ patient.id }}">
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary" type="submit">Registrar</button>
+            </div>
+        </div>
+    </form>
+    {% endblock %}

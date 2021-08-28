@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-+4#=jpjzx^)9k^s+p6v@jbzj^(m&^js@^o%r5$a4_h3pq2og%*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.5', 'localhost', '140.82.114.4']
+ALLOWED_HOSTS = ['192.168.1.5', 'localhost']
 
 
 # Application definition
@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'payments',
     'orthodontic',
     'laxity',
+    'pain_mapping'
 ]
 
 MIDDLEWARE = [

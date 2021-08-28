@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            {% if succes_msg %}
+            <div class="alert alert-success" role="alert">
+                {{ succes_msg }}
+            </div>
+            {% elif deleted_msg %}
+            <div class="alert alert-success" role="alert">
+                {{ deleted_msg }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h1>Tests de Mapeo de dolor del paciente {{ patient.name }}</h1>
+        </div>
+        <div class="col align-self-center text-end">
+            <a class="btn btn-success" href="{% url 'create_pain_mapping' patient.id %}" role="button">Registrar nuevo
+                test de mapeo de dolor</a>
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col">
+            <h4>Tests de Mapeo de dolor:</h4>
+            <table class="table table-striped">
+                <thead style="background-color: #6f42c1; color: #FFFFFF;">
+                    <tr>
+                        <th scope="col">Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for study in patient_pain_mapping_studies %}
+                    <tr>
+                        <th>{% language 'es' %}{{ study.created_at }}{% endlanguage %}</th>
+                        <th>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#delete-server-{{pain_mapping.id}}">
+                                Borrar
+                            </button>
+                        </th>
+                    </tr>
+                    <!-- Modal -->
+                    <div class="modal fade" id="delete-server-{{pain_mapping.id}}" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Borrar?</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Atencion!</p>
+                                    <p>esta apunto de borrar el Test de Mapeo de dolor</p>
+                                    <p>perfil facial: {{patient_pain_mapping_studies.created_at }}</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <form action="{% url 'delete_pain_mapping' pain_mapping.id patient.id %}"
+                                        method="POST">
+                                        {% csrf_token %}
+                                        <button class="btn btn-danger" type="submit">Eliminar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

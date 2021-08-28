@@ -4,7 +4,6 @@ from patient_profile.models import PatientProfile
 
 
 class Laxity(models.Model):
-    
     laxity_positive_points = models.CharField(max_length=200)
     mandibular_manipulation = models.CharField(max_length=200)
     premature_contact_point = models.CharField(max_length=200)

@@ -33,6 +33,9 @@ urlpatterns = [
 
     # Laxity urls
     path('laxity/', include('laxity.urls')),
+
+    # Pain Mapping urls
+    path('pain_mapping/', include('pain_mapping.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
