@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 
+{% load static %}
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -18,14 +20,14 @@
 </head>
 
 <body>
-    <div class="container-fluid" style="background-color: #6f42c1;">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <div class="container" style="background-color: #322232;">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
             <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-light text-decoration-none">
+                <a href="{% url 'admin' %}">
                 <img class="bi me-2"
-                    src="https://png.pngtree.com/png-clipart/20190924/original/pngtree-dental-logo-design-creative-dentist-logo-dental-clinic-creative-company-png-image_4817208.jpg"
-                    alt="tooth" width="50" height="50">
-                <a href="{% url 'admin' %}" style="text-decoration:none; color:white"><span
-                        class="fs-4">Administrador</span></a>
+                    src="{% static 'images/logo.png' %}"
+                    alt="tooth" width="100" height="60" 
+                ></a>
             </div>
             {% if user.is_authenticated %}
             <ul class="nav nav-pills">

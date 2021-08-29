@@ -1,6 +1,8 @@
 {% extends "base.html" %}
     {% block content %}
 
+    {% load static %}
+
     <div class="row">
         <div class="col">
             {% if error %}
@@ -11,17 +13,24 @@
         </div>
     </div>
     <div class="row">
+        <div class="col text-center"><h2>Palpacion muscular</h2></div>
+    </div>
+    <div class="row">
         <div class="col">
-
-            <h1>Nuevo examen de mapeo del dolor:</h1>
+            <img class="img-fluid" src="{% static 'images/pain_mapping.png' %}" alt="Palpacion">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2>mapeo del dolor:</h2>
         </div>
     </div>
     <form method="post">
         {% csrf_token %}
         <div class="row mb-3">
             <div class="row mb-3">
-                <div class="col"><span>Lado Derecho</span></div>
-                <div class="col text-end"><span>Lado Izquierdo</span></div>
+                <div class="col fw-bold"><span>Lado Derecho</span></div>
+                <div class="col text-end fw-bold"><span>Lado Izquierdo</span></div>
             </div>
             <div class="col-md-2">
                 <label for="right_side_pain_1" class="form-label">Dolor 1:</label>
