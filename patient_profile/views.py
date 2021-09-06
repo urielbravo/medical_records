@@ -6,6 +6,7 @@ from .forms import PatientProfileForm, PatientUpdateProfileForm
 from .models import PatientProfile
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from .filter import PatientFilter
 
 
 # functions to login a logout the user, basically the auth users
@@ -46,14 +47,26 @@ def create_patient_profile(request):
 def admin(request):
     patients = PatientProfile.objects.order_by('-created_at')
 
+
+    # Fiter by name of the patient functionality
+    patient_filter = PatientFilter(request.GET, queryset=patients)
+    patients = patient_filter.qs
+
     # Paginator functionality
-    paginator = Paginator(patients, 10)
+    paginator = Paginator(patients, 15)
     page = request.GET.get('page')
     page_patients = paginator.get_page(page)
 
+    # saving search value from the filter
+    search_value = request.GET.get('name', '')
+    print('value:', search_value)
+
     context = {
-        'patients': page_patients
+        'patients': page_patients,
+        'patient_filter': patient_filter,
+        'search_value': search_value
     }
+
     return render(request, 'admin/admin_dashboard.html', context)
 
 

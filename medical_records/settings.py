@@ -32,7 +32,9 @@ INSTALLED_APPS = [
     'orthodontic',
     'laxity',
     'pain_mapping',
-    'muscle_palpation'
+    'muscle_palpation',
+    # third party
+    'django_filters'
 ]
 
 MIDDLEWARE = [
