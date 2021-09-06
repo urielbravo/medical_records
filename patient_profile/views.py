@@ -5,6 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from .forms import PatientProfileForm, PatientUpdateProfileForm
 from .models import PatientProfile
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 
 # functions to login a logout the user, basically the auth users
@@ -43,8 +44,17 @@ def create_patient_profile(request):
 # here is the dashboard, here goes the list of patients
 @login_required(login_url='loginuser')
 def admin(request):
-    patients = PatientProfile.objects.all()
-    return render(request, 'admin/admin_dashboard.html', {'patients': patients})
+    patients = PatientProfile.objects.order_by('-created_at')
+
+    # Paginator functionality
+    paginator = Paginator(patients, 10)
+    page = request.GET.get('page')
+    page_patients = paginator.get_page(page)
+
+    context = {
+        'patients': page_patients
+    }
+    return render(request, 'admin/admin_dashboard.html', context)
 
 
 @login_required(login_url='loginuser')
