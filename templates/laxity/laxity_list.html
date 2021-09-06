@@ -36,6 +36,7 @@
                         <th scope="col">Diagnostico</th>
                         <th scope="col">Plan de tratamiento</th>
                         <th scope="col">Presupuesto</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,13 +48,13 @@
                         <th>{{ laxity.budget }}</th>
                         <th>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#delete-server-{{orthodontic.id}}">
+                                data-bs-target="#delete-server-{{laxity.id}}">
                                 Borrar
                             </button>
                         </th>
                     </tr>
                     <!-- Modal -->
-                    <div class="modal fade" id="delete-server-{{orthodontic.id}}" tabindex="-1"
+                    <div class="modal fade" id="delete-server-{{laxity.id}}" tabindex="-1"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -68,7 +69,7 @@
                                     <p>perfil facial: {{patient_laxity_studies.diagnose }}</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <form action="{% url 'delete_orthodontic' orthodontic.id patient.id %}"
+                                    <form action="{% url 'delete_laxity' laxity.id patient.id %}"
                                         method="POST">
                                         {% csrf_token %}
                                         <button class="btn btn-danger" type="submit">Eliminar</button>

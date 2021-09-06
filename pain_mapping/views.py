@@ -20,6 +20,7 @@ def create_pain_mapping(request, patient_pk):
         return render(request, 'pain_mapping/pain_mapping_form.html', context)
     else:
         try:
+            print('request.POST:', request.POST)
             form = PainMappingForm(request.POST)
             form.save()
             return render(request, 'pain_mapping/pain_mapping_list.html', context)

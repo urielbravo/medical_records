@@ -36,6 +36,9 @@ urlpatterns = [
 
     # Pain Mapping urls
     path('pain_mapping/', include('pain_mapping.urls')),
+
+    # Muscle Palpation urls
+    path('muscle_palpation/', include('muscle_palpation.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

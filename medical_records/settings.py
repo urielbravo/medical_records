@@ -31,7 +31,8 @@ INSTALLED_APPS = [
     'payments',
     'orthodontic',
     'laxity',
-    'pain_mapping'
+    'pain_mapping',
+    'muscle_palpation'
 ]
 
 MIDDLEWARE = [
