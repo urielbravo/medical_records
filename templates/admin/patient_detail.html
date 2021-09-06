@@ -69,10 +69,15 @@
         </div>
         <div class="row mb-4">
             <div class="col-12">
+                <a class="btn btn-info" href="{% url 'list_muscle_palpation' patient.id %}" role="button">Palpacion</a>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-12">
                 <a class="btn btn-danger" href="{% url 'list_laxity' patient.id %}" role="button">Laxitud</a>
             </div>
         </div>
-        <hr><br>
+        <hr>
         <div class="row">
             <div class="col-12">
                 <a class="btn btn-success" href="{% url 'list_payment' patient.id %}" role="button">Pagos</a>

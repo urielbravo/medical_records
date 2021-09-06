@@ -21,44 +21,33 @@
             <h1>Historial de: {{ patient.name }}</h1>
         </div>
         <div class="col align-self-center text-end">
-            <a class="btn btn-success" href="{% url 'create_orthodontic' patient.id %}" role="button">Registrar nuevo
-                examen ortodontico</a>
+            <a class="btn btn-success" href="{% url 'create_muscle_palpation' patient.id %}" role="button">Nueva palpitacion muscular</a>
         </div>
     </div>
     <br><br>
     <div class="row">
         <div class="col">
-            <h4>Examenes ortodonticos:</h4>
+            <h4>Examenes de palpacion:</h4>
             <table class="table table-striped">
                 <thead style="background-color: #322232; color: #FFFFFF;">
                     <tr>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Perfil facial</th>
-                        <th scope="col">Clase molar</th>
-                        <th scope="col">Clase caninca</th>
-                        <th scope="col">Mordida cruzada</th>
-                        <th scope="col">Habitos</th>
-                        <th scope="col"></th>
+                        <th scope="col">Fecha de creacion del examen</th>
+                        <th cope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for orthodontic in patient_orthodontics %}
+                    {% for palpation in patient_muscle_palpations %}
                     <tr>
-                        <th>{% language 'es' %}{{ orthodontic.created_at }}{% endlanguage %}</th>
-                        <th>{{ orthodontic.facial_profile }}</th>
-                        <th>{{ orthodontic.molar_class }}</th>
-                        <th>{{ orthodontic.canine_class }}</th>
-                        <th>{{ orthodontic.crossbite }}</th>
-                        <th>{{ orthodontic.habits }}</th>
+                        <th>{% language 'es' %}{{ palpation.created_at }}{% endlanguage %}</th>
                         <th>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#delete-server-{{orthodontic.id}}">
+                                data-bs-target="#delete-server-{{palpation.id}}">
                                 Borrar
                             </button>
                         </th>
                     </tr>
                     <!-- Modal -->
-                    <div class="modal fade" id="delete-server-{{orthodontic.id}}" tabindex="-1"
+                    <div class="modal fade" id="delete-server-{{palpation.id}}" tabindex="-1"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -70,10 +59,10 @@
                                 <div class="modal-body">
                                     <p>Atencion!</p>
                                     <p>esta apunto de borrar el examen ortodontico</p>
-                                    <p>perfil facial: {{orthodontic.facial_profile }}</p>
+                                    <p>perfil facial: {{palpation.created_at }}</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <form action="{% url 'delete_orthodontic' orthodontic.id patient.id %}"
+                                    <form action="{% url 'delete_muscle_palpation' palpation.id patient.id %}"
                                         method="POST">
                                         {% csrf_token %}
                                         <button class="btn btn-danger" type="submit">Eliminar</button>
@@ -88,7 +77,4 @@
         </div>
     </div>
 </div>
-
-
-
 {% endblock %}

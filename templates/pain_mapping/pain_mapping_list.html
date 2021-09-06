@@ -33,6 +33,7 @@
                 <thead style="background-color: #322232; color: #FFFFFF;">
                     <tr>
                         <th scope="col">Fecha</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,7 +63,7 @@
                                     <p>perfil facial: {{patient_pain_mapping_studies.created_at }}</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <form action="{% url 'delete_pain_mapping' pain_mapping.id patient.id %}"
+                                    <form action="{% url 'delete_pain_mapping' study.id patient.id %}"
                                         method="POST">
                                         {% csrf_token %}
                                         <button class="btn btn-danger" type="submit">Eliminar</button>
