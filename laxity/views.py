@@ -52,3 +52,9 @@ def delete_laxity(request, laxity_pk, patient_pk):
         'deleted_msg': 'Test eliminado'
         }
         return render(request, 'laxity/laxity_list.html', context)
+
+
+@login_required(login_url='loginuser')
+def laxity_detail(request, laxity_pk):
+    laxity = get_object_or_404(Laxity, pk=laxity_pk)
+    return render(request, 'laxity/laxity_detail.html', {'laxity': laxity})

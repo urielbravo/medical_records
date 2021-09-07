@@ -42,7 +42,7 @@
                 <tbody>
                     {% for laxity in patient_laxity_studies %}
                     <tr>
-                        <th>{% language 'es' %}{{ laxity.created_at }}{% endlanguage %}</th>
+                        <th><a href="{% url 'laxity_detail' laxity.id %}">{% language 'es' %}{{ laxity.created_at }}{% endlanguage %}</a></th>
                         <th>{{ laxity.diagnose }}</th>
                         <th>{{ laxity.treatment_plan }}</th>
                         <th>{{ laxity.budget }}</th>

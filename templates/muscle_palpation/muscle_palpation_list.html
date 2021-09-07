@@ -38,7 +38,7 @@
                 <tbody>
                     {% for palpation in patient_muscle_palpations %}
                     <tr>
-                        <th>{% language 'es' %}{{ palpation.created_at }}{% endlanguage %}</th>
+                        <th><a href="{% url 'muscle_palpation_detail' palpation.id %}">{% language 'es' %}{{ palpation.created_at }}{% endlanguage %}</a></th>
                         <th>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                 data-bs-target="#delete-server-{{palpation.id}}">

@@ -53,3 +53,8 @@ def delete_pain_mapping(request, pain_mapping_pk, patient_pk):
         'deleted_msg': 'Test eliminado'
         }
         return render(request, 'pain_mapping/pain_mapping_list.html', context)
+
+@login_required(login_url='loginuser')
+def pain_mapping_detail(request, pain_mapping_pk):
+    pain_mapping = get_object_or_404(PainMapping, pk=pain_mapping_pk)
+    return render(request, 'pain_mapping/pain_mapping_detail.html', {'pain_mapping': pain_mapping})

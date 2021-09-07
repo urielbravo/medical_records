@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+    {% load i18n %}
+    {% block content %}
+    <div class="row">
+        <div class="col">
+
+            <h1>Examen de laxitud creado el {% language 'es' %}{{ laxity.created_at }}{% endlanguage %}</h1>
+        </div>
+    </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="laxity_positive_points" class="form-label">Puntos positivos en examen de hiperlaxitud:</label>
+                <input 
+                    id="which_drug_allergy" 
+                    readonly type="text" 
+                    class="form-control"
+                    value="{{ laxity.laxity_positive_points }}"
+                >
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="mandibular_manipulation" class="form-label">Manipulacion mandibular:</label>
+                <input 
+                    id="which_drug_allergy" 
+                    readonly type="text" 
+                    class="form-control"
+                    value="{{ laxity.mandibular_manipulation }}"
+                >
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="premature_contact_point" class="form-label">Punto de contacto prematuro:</label>
+                <input 
+                    id="which_drug_allergy" 
+                    readonly type="text" 
+                    class="form-control"
+                    value="{{ laxity.premature_contact_point }}"
+                >
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="max_opening" class="form-label">Apertura maxima:</label>
+                <input 
+                    id="which_drug_allergy" 
+                    readonly type="text" 
+                    class="form-control"
+                    value="{{ laxity.max_opening }}"
+                >
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <label for="mandibular_opening_deviation" class="form-label">Desviacion mandibular en apertura:</label>
+                <input 
+                    id="which_drug_allergy" 
+                    readonly type="text" 
+                    class="form-control"
+                    value="{{ laxity.mandibular_opening_deviation }}"
+                >
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <label for="laterality" class="form-label">Lateralidades:</label>
+                <input 
+                    id="which_drug_allergy" 
+                    readonly type="text" 
+                    class="form-control"
+                    value="{{ laxity.laterality }}"
+                >
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <label for="condylar_mobility" class="form-label">Movilidad condilar:</label>
+                <input 
+                    id="which_drug_allergy" 
+                    readonly type="text" 
+                    class="form-control"
+                    value="{{ laxity.condylar_mobility }}"
+                >
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <label for="articulary_noises" class="form-label">Ruidos articulares:</label>
+                <input 
+                    id="which_drug_allergy" 
+                    readonly type="text" 
+                    class="form-control"
+                    value="{{ laxity.articulary_noises }}"
+                >
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <label for="presuntive_dx_articular" class="form-label">Dx presuntivo articular:</label>
+                <input 
+                    id="which_drug_allergy" 
+                    readonly type="text" 
+                    class="form-control"
+                    value="{{ laxity.presuntive_dx_articular }}"
+                >
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <label for="diagnose" class="form-label">Diagnostico:</label>
+                <input 
+                    id="which_drug_allergy" 
+                    readonly type="text" 
+                    class="form-control"
+                    value="{{ laxity.diagnose }}"
+                >
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <label for="treatment_plan" class="form-label">Plan de tratamiento:</label>
+                <input 
+                    id="which_drug_allergy" 
+                    readonly type="text" 
+                    class="form-control"
+                    value="{{ laxity.treatment_plan }}"
+                >
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <label for="budget" class="form-label">Presupuesto:</label>
+                <input 
+                    id="which_drug_allergy" 
+                    readonly type="text" 
+                    class="form-control"
+                    value="{{ laxity.budget }}"
+                >
+            </div>
+        </div>
+        <input id="id_patient" name="patient" type="hidden" value="{{ patient.id }}">
+    {% endblock %}

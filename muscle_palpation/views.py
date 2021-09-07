@@ -53,3 +53,8 @@ def delete_muscle_palpation(request, palpation_pk, patient_pk):
         }
         return render(request, 'muscle_palpation/muscle_palpation_list.html', context)
 
+
+@login_required(login_url='loginuser')
+def muscle_palpation_detail(request, palpation_pk):
+    muscle_palpation = get_object_or_404(MusclePalpation, pk=palpation_pk)
+    return render(request, 'muscle_palpation/muscle_palpation_detail.html', {'muscle_palpation': muscle_palpation})

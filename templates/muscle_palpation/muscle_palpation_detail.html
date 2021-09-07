@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+    {% block content %}
+    {% load i18n %}
+    {% load static %}
+    <div class="row">
+        <div class="col text-center">
+            <h2>Palpacion muscular</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <h4>Test hecho el:  {% language 'es' %}{{ muscle_palpation.created_at }}{% endlanguage %}</h4>
+        </div>
+    </div>
+        <div class="row">
+            <div class="col">
+                <img class="img-fluid" src="{% static 'images/right_side.png' %}" alt="Palpacion">
+            </div>
+            <div class="col align-self-center">
+                <div class="row mb-3">
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            {% if muscle_palpation.masseter_right %}
+                                <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+                            {% else %}
+                                <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-6 text-center">
+                        <span>Masetero</span>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            {% if muscle_palpation.masseter_left %}
+                                <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+                            {% else %}
+                                <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            {% if muscle_palpation.temporalis_right %}
+                                <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+                            {% else %}
+                                <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-6 text-center">
+                        <span>Temporal</span>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            {% if muscle_palpation.temporalis_left %}
+                                <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+                            {% else %}
+                                <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            {% if muscle_palpation.ecm_right %}
+                                <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+                            {% else %}
+                                <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-6 text-center">
+                        <span>ECM</span>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            {% if muscle_palpation.ecm_left %}
+                                <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+                            {% else %}
+                                <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            {% if muscle_palpation.digastric_right %}
+                                <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+                            {% else %}
+                                <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-6 text-center">
+                        <span>Digastrico</span>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            {% if muscle_palpation.digastric_left %}
+                                <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+                            {% else %}
+                                <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            {% if muscle_palpation.occipital_right %}
+                                <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+                            {% else %}
+                                <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-6 text-center">
+                        <span>Occipital</span>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            {% if muscle_palpation.occipital_left %}
+                                <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+                            {% else %}
+                                <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            {% if muscle_palpation.pc_right %}
+                                <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+                            {% else %}
+                                <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-6 text-center">
+                        <span>PC</span>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            {% if muscle_palpation.pc_left %}
+                                <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+                            {% else %}
+                                <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            {% if muscle_palpation.trapezius_right %}
+                                <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+                            {% else %}
+                                <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-6 text-center">
+                        <span>Trapecio</span>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            {% if muscle_palpation.trapezius_left %}
+                                <i class="bi bi-check-square-fill text-success " style="font-size: 1.5rem;"></i>
+                            {% else %}
+                                <i class="bi bi-x-square-fill text-danger" style="font-size: 1.5rem;"></i>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <img class="img-fluid" src="{% static 'images/left_side.png' %}" alt="Palpacion">
+            </div>
+        </div>
+    {% endblock %}

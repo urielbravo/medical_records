@@ -39,7 +39,7 @@
                 <tbody>
                     {% for study in patient_pain_mapping_studies %}
                     <tr>
-                        <th>{% language 'es' %}{{ study.created_at }}{% endlanguage %}</th>
+                        <th><a href="{% url 'pain_mapping_detail' study.id %}">{% language 'es' %}{{ study.created_at }}{% endlanguage %}</a></th>
                         <th>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                 data-bs-target="#delete-server-{{pain_mapping.id}}">
