@@ -643,35 +643,71 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-6">
-                            <div class="form-check">
-                                <input name="headache_pains_questionnaire" class="form-check-input" type="checkbox"
-                                    id="headache_pains_questionnaire" {% if patient.headache_pains_questionnaire %} checked {% endif %}>
-                                <label class="form-check-label" for="headache_pains_questionnaire">
-                                    ¿Sufre dolores de cabeza?
-                                </label>
+                            <div class="row">
+                                <div class="col">
+                                    <span>¿Sufre dolores de cabeza? si es asi, es, ¿unilateral? ¿bilateral?</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-check">
+                                        <input name="unilateral_headache" class="form-check-input" type="checkbox"
+                                            id="unilateral_headache" {% if patient.unilateral_headache %} checked {% endif %}>
+                                        <label class="form-check-label" for="unilateral_headache">
+                                            Unilateral
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-check">
+                                        <input name="bilateral_headache" class="form-check-input" type="checkbox"
+                                            id="bilateral_headache" {% if patient.bilateral_headache %} checked {% endif %}>
+                                        <label class="form-check-label" for="bilateral_headache">
+                                            Bilateral
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="form-check">
-                                <input name="bilateral_unilateral_headache" class="form-check-input" type="checkbox"
-                                    id="bilateral_unilateral_headache" {% if patient.bilateral_unilateral_headache %} checked {% endif %}>
-                                <label class="form-check-label" for="bilateral_unilateral_headache">
-                                    ¿El dolor de cabeza es unilateral? ¿Bilateral?
-                                </label>
+                            <div class="row">
+                                <div class="col">
+                                    <span>¿El dolor de cabeza es pulsante? ¿Opresivo? (como un casco que aprieta) ¿Electrico?</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-check">
+                                        <input name="pulsating_headache" class="form-check-input" type="checkbox"
+                                            id="pulsating_headache" {% if patient.pulsating_headache %} checked {% endif %}>
+                                        <label class="form-check-label" for="pulsating_headache">
+                                            Pulsante
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-check">
+                                        <input name="oppressive_headache" class="form-check-input" type="checkbox"
+                                            id="oppressive_headache" {% if patient.oppressive_headache %} checked {% endif %}>
+                                        <label class="form-check-label" for="oppressive_headache">
+                                            Opresivo
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-check">
+                                        <input name="electric_headache" class="form-check-input" type="checkbox"
+                                            id="electric_headache" {% if patient.electric_headache %} checked {% endif %}>
+                                        <label class="form-check-label" for="electric_headache">
+                                            Electrico
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-6">
-                            <div class="form-check">
-                                <input name="pulsating_headache" class="form-check-input" type="checkbox"
-                                    id="pulsating_headache" {% if patient.pulsating_headache %} checked {% endif %}>
-                                <label class="form-check-label" for="pulsating_headache">
-                                    ¿El dolor de cabeza es pulsante? ¿Opresivo? (como un casco que aprieta) ¿Urente?
-                                    (ardor) ¿Electrico?
-                                </label>
-                            </div>
-                        </div>
+                        
                         <div class="col-6">
                             <div class="form-check">
                                 <input name="migraine" class="form-check-input" type="checkbox" id="migraine" {% if patient.migraine %} checked {% endif %}>

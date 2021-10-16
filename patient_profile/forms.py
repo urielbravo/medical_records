@@ -74,9 +74,11 @@ class PatientProfileForm(ModelForm):
                   'open_mouth_a_lot',
                   'recent_life_change',
                   'nervous_tension',
-                  'headache_pains_questionnaire',
-                  'bilateral_unilateral_headache',
+                  'unilateral_headache',
+                  'bilateral_headache',
                   'pulsating_headache',
+                  'oppressive_headache',
+                  'electric_headache',
                   'migraine'
                   ]
         widgets = {
@@ -160,9 +162,11 @@ class PatientUpdateProfileForm(ModelForm):
                   'open_mouth_a_lot',
                   'recent_life_change',
                   'nervous_tension',
-                  'headache_pains_questionnaire',
-                  'bilateral_unilateral_headache',
+                  'unilateral_headache',
+                  'bilateral_headache',
                   'pulsating_headache',
+                  'oppressive_headache',
+                  'electric_headache',
                   'migraine'
                   ]
         # widgets = {

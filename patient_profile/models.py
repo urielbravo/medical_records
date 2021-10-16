@@ -81,9 +81,14 @@ class PatientProfile(models.Model):
     open_mouth_a_lot = models.BooleanField(default=False)
     recent_life_change = models.BooleanField(default=False)
     nervous_tension = models.BooleanField(default=False)
-    headache_pains_questionnaire = models.BooleanField(default=False)
-    bilateral_unilateral_headache = models.BooleanField(default=False)
+    # tipo de dolor de cabeza: unilateral o bilateral
+    unilateral_headache = models.BooleanField(default=False)
+    bilateral_headache = models.BooleanField(default=False)
+    # como es el dolor de cabeza: pulsatil, opresivo o electrico
     pulsating_headache = models.BooleanField(default=False)
+    oppressive_headache = models.BooleanField(default=False)
+    electric_headache = models.BooleanField(default=False)
+    ####################################################
     migraine = models.BooleanField(default=False)
 
 
