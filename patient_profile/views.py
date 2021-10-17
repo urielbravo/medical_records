@@ -30,6 +30,7 @@ def logout_user(request):
 
 
 # all the other regular functions
+@login_required(login_url='loginuser')
 def create_patient_profile(request):
     if request.method == 'GET':
         return render(request, 'patient_profile/patient_form.html', {'form': PatientProfileForm})
