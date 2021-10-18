@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block content %}
-<div class="row text-center">
-    <div class="col-10">
+<div class="row justify-content-center">
+    <div class="col-10 text-center">
         <h1>Perfil de: {{ patient.name }}</h1>
     </div>
 </div>
 <br>
 <div class="row">
-    <div class="col-5 ">
+    <div class="col-sm-5 patient-general-info-column">
         <img class="img-fluid mb-3" src="{{ patient.image.url }}" alt="Profile" style="max-width: 50%; height:auto;">
         <div class="row">
-            <div class="col-3">
+            <div class="col-sm-3 text-center">
                 <a class="btn btn-success" href="{% url 'patient_update' patient.id %}" role="button">Editar</a>
             </div>
-            <div class="col-3">
+            <div class="col-sm-3 text-center">
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-server-{{patient.id}}">
                     Borrar
                 </button>
@@ -42,9 +42,9 @@
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
     </div>
-    <div id="general-info-col" class="col-5">
+    <div id="general-info-col" class="col-sm-5">
         <h3>Informacion general</h3>
         <p><b>Ocupacion:</b> {{ patient.occupation }}</p>
         <p><b>Telefono:</b> {{ patient.phone_number }}</p>
@@ -55,7 +55,7 @@
         <p><b>Recomendado por:</b> {{ patient.recommended_by }}</p>
         <p><b>Motivo de consulta:</b> {{ patient.motive_of_consultancy }}</p>
     </div>
-    <div class="col-2 text-center">
+    <div class="col-sm-2 text-center">
         <h3>Examenes</h3>
         <div class="row mb-4">
             <div class="col-12">

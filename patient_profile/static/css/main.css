@@ -1,0 +1,31 @@
+.email-column {
+    display: none;
+} 
+
+@media (min-width: 576px) { 
+    .email-column {
+        display: table-cell;
+    } 
+}
+
+
+
+.patient-general-info-column {
+    text-align: center!important;
+} 
+
+@media (min-width: 576px) { 
+    .patient-general-info-column {
+        text-align: left!important;
+    } 
+}
+
+#general-info-col {
+    text-align: center!important;
+} 
+
+@media (min-width: 576px) { 
+    #general-info-col {
+        text-align: left!important;
+    } 
+}
