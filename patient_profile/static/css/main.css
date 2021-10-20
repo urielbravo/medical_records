@@ -70,3 +70,7 @@ h1, h2, h3, p, h5, span, h4, tbody > tr > th, .form-label {
     background-color: #322232;
     border-color: #322232;
 }
+
+.page-link, .page-link:hover {
+    color: #322232;
+}
