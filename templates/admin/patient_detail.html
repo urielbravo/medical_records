@@ -8,13 +8,13 @@
 </div>
 <br>
 <div class="row">
-    <div class="col-sm-5 patient-general-info-column">
+    <div class="col-md-5 patient-general-info-column">
         <img class="img-fluid mb-3" src="{{ patient.image.url }}" alt="Profile" style="max-width: 50%; height:auto;">
-        <div class="row">
-            <div class="col-sm-3 text-center">
+        <div class="row justify-content-center">
+            <div class="col-md-3 text-center mb-1">
                 <a class="btn btn-success" href="{% url 'patient_update' patient.id %}" role="button">Editar</a>
             </div>
-            <div class="col-sm-3 text-center">
+            <div class="col-md-3 text-center mb-1">
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-server-{{patient.id}}">
                     Borrar
                 </button>
@@ -44,7 +44,7 @@
             </div>
         </div>
     </div>
-    <div id="general-info-col" class="col-sm-5">
+    <div id="general-info-col" class="col-md-5">
         <h3>Informacion general</h3>
         <p><b>Ocupacion:</b> {{ patient.occupation }}</p>
         <p><b>Telefono:</b> {{ patient.phone_number }}</p>
@@ -55,32 +55,37 @@
         <p><b>Recomendado por:</b> {{ patient.recommended_by }}</p>
         <p><b>Motivo de consulta:</b> {{ patient.motive_of_consultancy }}</p>
     </div>
-    <div class="col-sm-2 text-center">
+    <div class="col-md-2 text-center">
         <h3>Examenes</h3>
         <div class="row mb-4">
             <div class="col-12">
-                <a class="btn btn-primary" href="{% url 'list_pain_mapping' patient.id %}" role="button">Mapeo del dolor</a>
+                <a class="btn col-12 btn-outline-purple" href="{% url 'list_muscle_palpation' patient.id %}" role="button">Palpacion</a>
             </div>
         </div>
         <div class="row mb-4">
             <div class="col-12">
-                <a class="btn btn-warning" href="{% url 'list_orthodontic' patient.id %}" role="button">Ortodontico</a>
+                <a class="btn col-12 btn-outline-purple" href="{% url 'list_pain_mapping' patient.id %}" role="button">Mapeo del dolor</a>
             </div>
         </div>
         <div class="row mb-4">
             <div class="col-12">
-                <a class="btn btn-info" href="{% url 'list_muscle_palpation' patient.id %}" role="button">Palpacion</a>
+                <a class="btn col-12 btn-outline-purple" href="{% url 'list_laxity' patient.id %}" role="button">Laxitud</a>
             </div>
         </div>
         <div class="row mb-4">
             <div class="col-12">
-                <a class="btn btn-danger" href="{% url 'list_laxity' patient.id %}" role="button">Laxitud</a>
+                <a class="btn col-12 btn-outline-purple" href="{% url 'list_orthodontic' patient.id %}" role="button">Ortodontico</a>
             </div>
         </div>
         <hr>
+        <div class="row  mb-4">
+            <div class="col-12">
+                <a class="btn col-12 btn-outline-purple" href="{% url 'list_annotations' patient.id %}" role="button">Anotaciones</a>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12">
-                <a class="btn btn-success" href="{% url 'list_payment' patient.id %}" role="button">Pagos</a>
+                <a class="btn col-12 btn-outline-purple col-12" href="{% url 'list_payment' patient.id %}" role="button">Pagos</a>
             </div>
         </div>
     </div>

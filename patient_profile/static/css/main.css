@@ -8,16 +8,8 @@
     } 
 }
 
-
-
 .patient-general-info-column {
     text-align: center!important;
-} 
-
-@media (min-width: 576px) { 
-    .patient-general-info-column {
-        text-align: left!important;
-    } 
 }
 
 #general-info-col {
@@ -28,4 +20,53 @@
     #general-info-col {
         text-align: left!important;
     } 
+}
+
+/* btn-purple */
+.btn-purple{
+    background-color: #322232;
+    color:#FFF;
+    border-color: #322232;
+}
+ 
+.btn-purple:hover, .btn-purple:focus, .btn-purple:active, .btn-purple.active, .open .dropdown-toggle.btn-purple {
+    background-color: #322232;
+    color:#FFF;
+    border-color: #322232;
+}
+
+.btn-check:focus+.btn, .btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(50 34 50 / 25%);
+}
+
+/* btn-outline-purple */
+.btn-outline-purple{
+    background-color: #FFF;
+    color:#322232;
+    border-color: #322232;
+}
+ 
+.btn-outline-purple:hover, .btn-outline-purple:focus, .btn-outline-purple:active, .btn-outline-purple.active, .open .dropdown-toggle.btn-outline-purple {
+    background-color: #322232;
+    color:#FFF;
+    border-color: #322232;
+}
+
+.btn-check:focus+.btn, .btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(50 34 50 / 25%);
+}
+
+/* change font colors to purple */
+h1, h2, h3, p, h5, span, h4, tbody > tr > th, .form-label {
+    color: #322232;
+}
+
+/* page navigator change color */
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #322232;
+    border-color: #322232;
 }

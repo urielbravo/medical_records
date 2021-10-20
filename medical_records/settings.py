@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'laxity',
     'pain_mapping',
     'muscle_palpation',
+    'annotations',
     # third party
     'django_filters'
 ]

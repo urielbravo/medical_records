@@ -17,7 +17,7 @@
 			<h1>Admin</h1>
 		</div>
 		<div class="col text-end">
-			<a class="btn btn-success" href="{% url 'all_payments'  %}" role="button">
+			<a class="btn btn-outline-purple" href="{% url 'all_payments'  %}" role="button">
 				Pagos
 			</a>
 		</div>
@@ -31,7 +31,7 @@
 					<form class="d-flex" method="GET">
 						<input class="form-control me-2" type="text" name="name" id="id_name" placeholder="Buscar paciente" aria-label="Search" value="{{ search_value }}">
 						<!-- {{ patient_filter.form }} -->
-						<button class="btn btn-primary" type="submit">Buscar</button>
+						<button class="btn btn-purple" type="submit">Buscar</button>
 					</form>
 				</div>
 			</div>
