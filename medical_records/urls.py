@@ -39,6 +39,9 @@ urlpatterns = [
 
     # Muscle Palpation urls
     path('muscle_palpation/', include('muscle_palpation.urls')),
+
+    # Annotation urls
+    path('annotations/', include('annotations.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -15,42 +15,40 @@
 	</div>
 	<div class="row">
 		<div class="col">
-			<h1>Historial de Pagos de: {{ user.name }}</h1>
+			<h1>Historial anotaciones de: {{ patient.name }}</h1>
 		</div>
         <div class="col align-self-center text-end">
-            <a class="btn btn-outline-purple" href="{% url 'create_payment' user.id %}" role="button">Registrar nuevo pago</a>
+            <a class="btn btn-outline-purple" href="{% url 'create_annotation' patient.id %}" role="button">Registrar nueva anotacion</a>
         </div>
 	</div>
 	<br><br>
 	<div class="row">
 		<div class="col">
-			<h4>Pagos:</h4>
+			<h4>Anotaciones:</h4>
 			<table class="table table-striped">
 				<thead style="background-color: #322232; color: #FFFFFF;">
 				<tr>
 					<th scope="col">Fecha</th>
-					<th scope="col">Descripcion del procedimiento</th>
-					<th scope="col">Pago</th>
-					<th scope="col">Mes</th>
+					<th scope="col">Titulo</th>
+					<th scope="col">Anotacion</th>
 					<th cope="col"></th>
 				</tr>
 				</thead>
 				<tbody>
-				{% for payment in user_payments %}
+				{% for annotation in patient_annotations %}
 				<tr class="align-middle">
-					<th>{% language 'es' %}{{ payment.date_of_payment }}{% endlanguage %}</th>
-					<th>{{ payment.procedure_description }}</th>
-					<th>${{ payment.amount|intcomma }}</th>
-					<th>{% language 'es' %}{{ payment.date_of_payment|date:"F" }}{% endlanguage %}</th>
+					<th>{% language 'es' %}{{ annotation.date }}{% endlanguage %}</th>
+					<th>{{ annotation.title }}</th>
+					<th>{{ annotation.body }}</th>
 					<th class="text-center">
 						<button type="button" class="btn btn-danger" data-bs-toggle="modal"
-							data-bs-target="#delete-server-{{payment.id}}">
+							data-bs-target="#delete-server-{{annotation.id}}">
 							Borrar
 						</button>
 					</th>
 				</tr>
 				<!-- Modal -->
-				<div class="modal fade" id="delete-server-{{payment.id}}" tabindex="-1"
+				<div class="modal fade" id="delete-server-{{annotation.id}}" tabindex="-1"
 				aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -61,13 +59,12 @@
 						</div>
 						<div class="modal-body">
 							<p>Atencion!</p>
-							<p>esta apunto de borrar el pago</p>
-							<p>Procedimiento: {{ payment.procedure_description }}</p>
-							<p>Cantidad: {{payment.amount|intcomma}}</p>
-							<p>Hecho el: {% language 'es' %}{{ payment.date_of_payment }}{% endlanguage %}</p>
+							<p>esta apunto de borrar la anotacion</p>
+							<p>Anotacion: {{ annotation.title }}</p>
+							<p>Hecho el: {% language 'es' %}{{ annotation.date }}{% endlanguage %}</p>
 						</div>
 						<div class="modal-footer">
-							<form action="{% url 'delete_payment' payment.id user.id %}"
+							<form action="{% url 'delete_annotation' annotation.id patient.id %}"
 								method="POST">
 								{% csrf_token %}
 								<button class="btn btn-danger" type="submit">Eliminar</button>
@@ -78,12 +75,6 @@
 			</div>
 				{% endfor %}
 				</tbody>
-				<tfoot>
-					<th>Total</th>
-					<th></th>
-					<th>${{ total_payments.amount__sum|floatformat:2|intcomma }}</th>
-					<th></th>
-				</tfoot>
 			</table>
 
 
