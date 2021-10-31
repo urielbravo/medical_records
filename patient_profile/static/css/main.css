@@ -1,9 +1,32 @@
-.email-column {
+/* adding this class will hide the table cell in small devices */
+.hide-on-small-width {
     display: none;
 } 
 
 @media (min-width: 576px) { 
-    .email-column {
+    .hide-on-small-width {
+        display: table-cell;
+    } 
+}
+
+/* adding this class will hide the table cell in medium devices */
+.hide-on-mid-width {
+    display: none;
+} 
+
+@media (min-width: 768px) { 
+    .hide-on-mid-width {
+        display: table-cell;
+    } 
+}
+
+/* adding this class will hide the table cell in large devices */
+.hide-on-large-width {
+    display: none;
+} 
+
+@media (min-width: 992px) { 
+    .hide-on-large-width {
         display: table-cell;
     } 
 }
