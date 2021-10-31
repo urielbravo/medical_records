@@ -40,7 +40,7 @@
 				<tr>
 					<th scope="col">Nombre</th>
 					<th scope="col">Numero de telefono</th>
-					<th scope="col" class="email-column">Email</th>
+					<th scope="col" class="hide-on-mid-width">Email</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -48,7 +48,7 @@
 				<tr>
 					<th><a href="{% url 'patient_detail' patient.id %}">{{ patient.name }}</a></th>
 					<th>{{ patient.phone_number }}</th>
-					<th class="email-column">{{ patient.email }}</th>
+					<th class="hide-on-mid-width">{{ patient.email }}</th>
 				</tr>
 				{% endfor %}
 				</tbody>

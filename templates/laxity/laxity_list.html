@@ -33,19 +33,19 @@
                 <thead style="background-color: #322232; color: #FFFFFF;">
                     <tr>
                         <th scope="col">Fecha</th>
-                        <th scope="col">Diagnostico</th>
-                        <th scope="col">Plan de tratamiento</th>
-                        <th scope="col">Presupuesto</th>
-                        <th scope="col"></th>
+                        <th class="hide-on-large-width" scope="col">Diagnostico</th>
+                        <th class="hide-on-large-width" scope="col">Plan de tratamiento</th>
+                        <th class="hide-on-large-width" scope="col">Presupuesto</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for laxity in patient_laxity_studies %}
                     <tr>
                         <th><a href="{% url 'laxity_detail' laxity.id %}">{% language 'es' %}{{ laxity.created_at }}{% endlanguage %}</a></th>
-                        <th>{{ laxity.diagnose }}</th>
-                        <th>{{ laxity.treatment_plan }}</th>
-                        <th>{{ laxity.budget }}</th>
+                        <th class="hide-on-large-width">{{ laxity.diagnose }}</th>
+                        <th class="hide-on-large-width">{{ laxity.treatment_plan }}</th>
+                        <th class="hide-on-large-width">{{ laxity.budget }}</th>
                         <th>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                 data-bs-target="#delete-server-{{laxity.id}}">

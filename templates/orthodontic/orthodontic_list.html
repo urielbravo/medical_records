@@ -33,23 +33,23 @@
                 <thead style="background-color: #322232; color: #FFFFFF;">
                     <tr>
                         <th scope="col">Fecha</th>
-                        <th scope="col">Perfil facial</th>
-                        <th scope="col">Clase molar</th>
-                        <th scope="col">Clase caninca</th>
-                        <th scope="col">Mordida cruzada</th>
-                        <th scope="col">Habitos</th>
+                        <th class="hide-on-large-width" scope="col">Perfil facial</th>
+                        <th class="hide-on-large-width" scope="col">Clase molar</th>
+                        <th class="hide-on-large-width" scope="col">Clase caninca</th>
+                        <th class="hide-on-large-width" scope="col">Mordida cruzada</th>
+                        <th class="hide-on-large-width" scope="col">Habitos</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for orthodontic in patient_orthodontics %}
                     <tr>
-                        <th>{% language 'es' %}{{ orthodontic.created_at }}{% endlanguage %}</th>
-                        <th>{{ orthodontic.facial_profile }}</th>
-                        <th>{{ orthodontic.molar_class }}</th>
-                        <th>{{ orthodontic.canine_class }}</th>
-                        <th>{{ orthodontic.crossbite }}</th>
-                        <th>{{ orthodontic.habits }}</th>
+                        <th><a href="{% url 'orthodontic_detail' orthodontic.id %}">{% language 'es' %}{{ orthodontic.created_at }}{% endlanguage %}</a></th>
+                        <th class="hide-on-large-width">{{ orthodontic.facial_profile }}</th>
+                        <th class="hide-on-large-width">{{ orthodontic.molar_class }}</th>
+                        <th class="hide-on-large-width">{{ orthodontic.canine_class }}</th>
+                        <th class="hide-on-large-width">{{ orthodontic.crossbite }}</th>
+                        <th class="hide-on-large-width">{{ orthodontic.habits }}</th>
                         <th>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                 data-bs-target="#delete-server-{{orthodontic.id}}">

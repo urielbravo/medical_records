@@ -41,6 +41,12 @@ def list_orthodontic(request, patient_pk):
 
 
 @login_required(login_url='loginuser')
+def orthodontic_detail(request, orthodontic_pk):
+    orthodontic = get_object_or_404(Orthodontic, pk=orthodontic_pk)
+    return render(request, 'orthodontic/orthodontic_detail.html', {'orthodontic': orthodontic})
+
+
+@login_required(login_url='loginuser')
 def delete_orthodontic(request, orthodontic_pk, patient_pk):
     orthodontic = get_object_or_404(Orthodontic, pk=orthodontic_pk)
     if request.method == 'POST':

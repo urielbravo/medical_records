@@ -11,168 +11,177 @@
             <img class="img-fluid" src="{% static 'images/pain_mapping.png' %}" alt="Palpacion">
         </div>
     </div>
-        <div class="row mb-3">
+    <div class="row justify-content-between">
+        <div class="col-4">
+                <div class="row mb-3">
+                    <div class="col fw-bold"><span>Lado Derecho</span></div>
+                </div>
+                <div class="row mb-3">
+                    <label for="right_side_pain_1" class="form-label">Dolor 1:</label>
+                    <input 
+                        id="which_drug_allergy" 
+                        readonly 
+                        type="text" 
+                        class="form-control"
+                        value="{{ pain_mapping.right_side_pain_1 }}"
+                    >
+                </div>
             <div class="row mb-3">
-                <div class="col fw-bold"><span>Lado Derecho</span></div>
-                <div class="col text-end fw-bold"><span>Lado Izquierdo</span></div>
+                    <label for="right_side_pain_2" class="form-label">Dolor 2:</label>
+                    <input 
+                        id="which_drug_allergy" 
+                        readonly 
+                        type="text" 
+                        class="form-control"
+                        value="{{ pain_mapping.right_side_pain_2 }}"
+                    >
             </div>
-            <div class="col-md-2">
-                <label for="right_side_pain_1" class="form-label">Dolor 1:</label>
-                <input 
-                    id="which_drug_allergy" 
-                    readonly type="text" 
-                    class="form-control"
-                    value="{{ pain_mapping.right_side_pain_1 }}"
-                >
+            <div class="row mb-3">
+                    <label for="right_side_pain_3" class="form-label">Dolor 3:</label>
+                    <input 
+                        id="which_drug_allergy" 
+                        readonly 
+                        type="text" 
+                        class="form-control"
+                        value="{{ pain_mapping.right_side_pain_3 }}"
+                    >
+            </div>        
+            <div class="row mb-3">
+                    <label for="right_side_pain_4" class="form-label">Dolor 4:</label>
+                    <input 
+                        id="which_drug_allergy" 
+                        readonly 
+                        type="text" 
+                        class="form-control"
+                        value="{{ pain_mapping.right_side_pain_4 }}"
+                    >
             </div>
-            <div class="col-md-2 offset-md-8">
-                <label for="left_side_pain_1" class="form-label">Dolor 1:</label>
-                <input 
-                    id="which_drug_allergy" 
-                    readonly type="text" 
-                    class="form-control"
-                    value="{{ pain_mapping.left_side_pain_1 }}"
-                >
+            <div class="row mb-3">
+                    <label for="right_side_pain_5" class="form-label">Dolor 5:</label>
+                    <input 
+                        id="which_drug_allergy" 
+                        readonly 
+                        type="text" 
+                        class="form-control"
+                        value="{{ pain_mapping.right_side_pain_5 }}"
+                    >
             </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-2">
-                <label for="right_side_pain_2" class="form-label">Dolor 2:</label>
-                <input 
-                    id="which_drug_allergy" 
-                    readonly type="text" 
-                    class="form-control"
-                    value="{{ pain_mapping.right_side_pain_2 }}"
-                >
+            <div class="row mb-3">
+                    <label for="right_side_pain_6" class="form-label">Dolor 6:</label>
+                    <input 
+                        id="which_drug_allergy" 
+                        readonly 
+                        type="text" 
+                        class="form-control"
+                        value="{{ pain_mapping.right_side_pain_6 }}"
+                    >
             </div>
-            <div class="col-md-2 offset-md-8">
-                <label for="left_side_pain_2" class="form-label">Dolor 2:</label>
-                <input 
-                    id="which_drug_allergy" 
-                    readonly type="text" 
-                    class="form-control"
-                    value="{{ pain_mapping.left_side_pain_2 }}"
-                >
+            <div class="row mb-3">
+                    <label for="right_side_pain_7" class="form-label">Dolor 7:</label>
+                    <input 
+                        id="which_drug_allergy" 
+                        readonly 
+                        type="text" 
+                        class="form-control"
+                        value="{{ pain_mapping.right_side_pain_7 }}"
+                    >
             </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-2">
-                <label for="right_side_pain_3" class="form-label">Dolor 3:</label>
-                <input 
-                    id="which_drug_allergy" 
-                    readonly type="text" 
-                    class="form-control"
-                    value="{{ pain_mapping.right_side_pain_3 }}"
-                >
-            </div>
-            <div class="col-md-2 offset-md-8">
-                <label for="left_side_pain_3" class="form-label">Dolor 3:</label>
-                <input 
-                    id="which_drug_allergy" 
-                    readonly type="text" 
-                    class="form-control"
-                    value="{{ pain_mapping.left_side_pain_3 }}"
-                >
-            </div>
-        </div>        
-        <div class="row mb-3">
-            <div class="col-md-2">
-                <label for="right_side_pain_4" class="form-label">Dolor 4:</label>
-                <input 
-                    id="which_drug_allergy" 
-                    readonly type="text" 
-                    class="form-control"
-                    value="{{ pain_mapping.right_side_pain_4 }}"
-                >
-            </div>
-            <div class="col-md-2 offset-md-8">
-                <label for="left_side_pain_4" class="form-label">Dolor 4:</label>
-                <input 
-                    id="which_drug_allergy" 
-                    readonly type="text" 
-                    class="form-control"
-                    value="{{ pain_mapping.left_side_pain_4 }}"
-                >
+            <div class="row mb-5">
+                    <label for="right_side_pain_8" class="form-label">Dolor 8:</label>
+                    <input 
+                        id="which_drug_allergy" 
+                        readonly 
+                        type="text" 
+                        class="form-control"
+                        value="{{ pain_mapping.right_side_pain_8 }}"
+                    >
             </div>
         </div>
-        <div class="row mb-3">
-            <div class="col-md-2">
-                <label for="right_side_pain_5" class="form-label">Dolor 5:</label>
-                <input 
-                    id="which_drug_allergy" 
-                    readonly type="text" 
-                    class="form-control"
-                    value="{{ pain_mapping.right_side_pain_5 }}"
-                >
-            </div>
-            <div class="col-md-2 offset-md-8">
-                <label for="left_side_pain_5" class="form-label">Dolor 5:</label>
-                <input 
-                    id="which_drug_allergy" 
-                    readonly type="text" 
-                    class="form-control"
-                    value="{{ pain_mapping.left_side_pain_5 }}"
-                >
-            </div>
+        <div class="col-4">
+                <div class="row mb-3">
+                    <div class="col text-end fw-bold"><span>Lado Izquierdo</span></div>
+                </div>
+                <div class="row mb-3">
+                    <label for="left_side_pain_1" class="form-label">Dolor 1:</label>
+                    <input 
+                        id="which_drug_allergy" 
+                        readonly 
+                        type="text" 
+                        class="form-control"
+                        value="{{ pain_mapping.left_side_pain_1 }}"
+                    >
+                </div>
+                <div class="row mb-3">
+                        <label for="left_side_pain_2" class="form-label">Dolor 2:</label>
+                        <input 
+                            id="which_drug_allergy" 
+                            readonly 
+                            type="text" 
+                            class="form-control"
+                            value="{{ pain_mapping.left_side_pain_2 }}"
+                        >
+                </div>
+                <div class="row mb-3">
+                    <label for="left_side_pain_3" class="form-label">Dolor 3:</label>
+                    <input 
+                        id="which_drug_allergy" 
+                        readonly 
+                        type="text" 
+                        class="form-control"
+                        value="{{ pain_mapping.left_side_pain_3 }}"
+                    >
+                </div>
+                <div class="row mb-3">
+                    <label for="left_side_pain_4" class="form-label">Dolor 4:</label>
+                    <input 
+                        id="which_drug_allergy" 
+                        readonly 
+                        type="text" 
+                        class="form-control"
+                        value="{{ pain_mapping.left_side_pain_4 }}"
+                    >
+                </div>
+                <div class="row mb-3">
+                    <label for="left_side_pain_5" class="form-label">Dolor 5:</label>
+                    <input 
+                        id="which_drug_allergy" 
+                        readonly 
+                        type="text" 
+                        class="form-control"
+                        value="{{ pain_mapping.left_side_pain_5 }}"
+                    >
+                </div>
+                <div class="row mb-3">
+                    <label for="left_side_pain_6" class="form-label">Dolor 6:</label>
+                    <input 
+                        id="which_drug_allergy" 
+                        readonly 
+                        type="text" 
+                        class="form-control"
+                        value="{{ pain_mapping.left_side_pain_6 }}"
+                    >
+                </div>
+                <div class="row mb-3">
+                    <label for="left_side_pain_7" class="form-label">Dolor 7:</label>
+                    <input 
+                        id="which_drug_allergy" 
+                        readonly 
+                        type="text" 
+                        class="form-control"
+                        value="{{ pain_mapping.left_side_pain_7 }}"
+                    >
+                </div>
+                <div class="row mb-5">
+                    <label for="left_side_pain_8" class="form-label">Dolor 8:</label>
+                    <input 
+                        id="which_drug_allergy" 
+                        readonly 
+                        type="text" 
+                        class="form-control"
+                        value="{{ pain_mapping.left_side_pain_8 }}"
+                    >
+                </div>
         </div>
-        <div class="row mb-3">
-            <div class="col-md-2">
-                <label for="right_side_pain_6" class="form-label">Dolor 6:</label>
-                <input 
-                    id="which_drug_allergy" 
-                    readonly type="text" 
-                    class="form-control"
-                    value="{{ pain_mapping.right_side_pain_6 }}"
-                >
-            </div>
-            <div class="col-md-2 offset-md-8">
-                <label for="left_side_pain_6" class="form-label">Dolor 6:</label>
-                <input 
-                    id="which_drug_allergy" 
-                    readonly type="text" 
-                    class="form-control"
-                    value="{{ pain_mapping.left_side_pain_6 }}"
-                >
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-2">
-                <label for="right_side_pain_7" class="form-label">Dolor 7:</label>
-                <input 
-                    id="which_drug_allergy" 
-                    readonly type="text" 
-                    class="form-control"
-                    value="{{ pain_mapping.right_side_pain_7 }}"
-                >
-            </div>
-            <div class="col-md-2 offset-md-8">
-                <label for="left_side_pain_7" class="form-label">Dolor 7:</label>
-                <input 
-                    id="which_drug_allergy" 
-                    readonly type="text" 
-                    class="form-control"
-                    value="{{ pain_mapping.left_side_pain_7 }}"
-                >
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-2">
-                <label for="right_side_pain_8" class="form-label">Dolor 8:</label>
-                <input 
-                    id="which_drug_allergy" 
-                    readonly type="text" 
-                    class="form-control"
-                    value="{{ pain_mapping.right_side_pain_8 }}"
-                >
-            </div>
-            <div class="col-md-2 offset-md-8">
-                <label for="left_side_pain_8" class="form-label">Dolor 8:</label>
-                <input 
-                    id="which_drug_allergy" 
-                    readonly type="text" 
-                    class="form-control"
-                    value="{{ pain_mapping.left_side_pain_8 }}"
-                >
-            </div>
-        </div>
+    </div>
+        
     {% endblock %}
