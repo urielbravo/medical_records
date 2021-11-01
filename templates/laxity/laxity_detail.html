@@ -139,5 +139,13 @@
                 >
             </div>
         </div>
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <div class="form-floating">
+                    <textarea class="form-control" id="id_body"  name="note" style="height: 15rem" readonly>{{ laxity.note }}</textarea>
+                    <label for="id_body">Nota:</label>
+                </div>
+            </div>
+        </div>
         <input id="id_patient" name="patient" type="hidden" value="{{ patient.id }}">
     {% endblock %}

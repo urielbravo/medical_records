@@ -183,4 +183,12 @@
                 <img class="img-fluid" src="{% static 'images/left_side.png' %}" alt="Palpacion">
             </div>
         </div>
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <div class="form-floating">
+                    <textarea class="form-control" id="id_body"  name="note" style="height: 15rem" readonly>{{ muscle_palpation.note }}</textarea>
+                    <label for="id_body">Nota:</label>
+                </div>
+            </div>
+        </div>
     {% endblock %}

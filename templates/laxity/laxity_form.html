@@ -21,73 +21,81 @@
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="laxity_positive_points" class="form-label">Puntos positivos en examen de hiperlaxitud:</label>
-                <input id="laxity_positive_points" name="laxity_positive_points" type="text" class="form-control">
+                <input id="laxity_positive_points" name="laxity_positive_points" type="text" class="form-control" required>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="mandibular_manipulation" class="form-label">Manipulacion mandibular:</label>
-                <input id="mandibular_manipulation" name="mandibular_manipulation" type="text" class="form-control">
+                <input required id="mandibular_manipulation" name="mandibular_manipulation" type="text" class="form-control">
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="premature_contact_point" class="form-label">Punto de contacto prematuro:</label>
-                <input id="premature_contact_point" name="premature_contact_point" type="text" class="form-control">
+                <input required id="premature_contact_point" name="premature_contact_point" type="text" class="form-control">
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="max_opening" class="form-label">Apertura maxima:</label>
-                <input id="max_opening" name="max_opening" type="text" class="form-control">
+                <input required id="max_opening" name="max_opening" type="text" class="form-control">
             </div>
         </div>
         <div class="row mb-5">
             <div class="col-md-6">
                 <label for="mandibular_opening_deviation" class="form-label">Desviacion mandibular en apertura:</label>
-                <input id="mandibular_opening_deviation" name="mandibular_opening_deviation" type="text" class="form-control">
+                <input required id="mandibular_opening_deviation" name="mandibular_opening_deviation" type="text" class="form-control">
             </div>
         </div>
         <div class="row mb-5">
             <div class="col-md-6">
                 <label for="laterality" class="form-label">Lateralidades:</label>
-                <input id="laterality" name="laterality" type="text" class="form-control">
+                <input required id="laterality" name="laterality" type="text" class="form-control">
             </div>
         </div>
         <div class="row mb-5">
             <div class="col-md-6">
                 <label for="condylar_mobility" class="form-label">Movilidad condilar:</label>
-                <input id="condylar_mobility" name="condylar_mobility" type="text" class="form-control">
+                <input required id="condylar_mobility" name="condylar_mobility" type="text" class="form-control">
             </div>
         </div>
         <div class="row mb-5">
             <div class="col-md-6">
                 <label for="articulary_noises" class="form-label">Ruidos articulares:</label>
-                <input id="articulary_noises" name="articulary_noises" type="text" class="form-control">
+                <input required id="articulary_noises" name="articulary_noises" type="text" class="form-control">
             </div>
         </div>
         <div class="row mb-5">
             <div class="col-md-6">
                 <label for="presuntive_dx_articular" class="form-label">Dx presuntivo articular:</label>
-                <input id="presuntive_dx_articular" name="presuntive_dx_articular" type="text" class="form-control">
+                <input required id="presuntive_dx_articular" name="presuntive_dx_articular" type="text" class="form-control">
             </div>
         </div>
         <div class="row mb-5">
             <div class="col-md-6">
                 <label for="diagnose" class="form-label">Diagnostico:</label>
-                <input id="diagnose" name="diagnose" type="text" class="form-control">
+                <input required id="diagnose" name="diagnose" type="text" class="form-control">
             </div>
         </div>
         <div class="row mb-5">
             <div class="col-md-6">
                 <label for="treatment_plan" class="form-label">Plan de tratamiento:</label>
-                <input id="treatment_plan" name="treatment_plan" type="text" class="form-control">
+                <input required id="treatment_plan" name="treatment_plan" type="text" class="form-control">
             </div>
         </div>
         <div class="row mb-5">
             <div class="col-md-6">
                 <label for="budget" class="form-label">Presupuesto:</label>
-                <input id="budget" name="budget" type="text" class="form-control">
+                <input required id="budget" name="budget" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <div class="form-floating">
+                    <textarea class="form-control" id="id_body" placeholder="nota"  name="note" style="height: 15rem"></textarea>
+                    <label for="id_body">Nota:</label>
+                </div>
             </div>
         </div>
         <input id="id_patient" name="patient" type="hidden" value="{{ patient.id }}">

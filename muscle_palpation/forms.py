@@ -20,5 +20,6 @@ class MusclePalpationForm(ModelForm):
             'pc_left',
             'trapezius_right',
             'trapezius_left',
+            'note',
             'patient'
         ]

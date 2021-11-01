@@ -9,6 +9,8 @@ class Orthodontic(models.Model):
     canine_class = models.CharField(max_length=200)
     crossbite = models.CharField(max_length=200)
     habits = models.CharField(max_length=200)
+    note = models.TextField(max_length=500, blank=True )
+    
     created_at = models.DateField(auto_now_add=True)
     patient = models.ForeignKey(PatientProfile, on_delete=CASCADE)
 
