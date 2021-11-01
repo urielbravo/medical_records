@@ -18,6 +18,7 @@ class MusclePalpation(models.Model):
     pc_left = models.BooleanField(default=False)
     trapezius_right = models.BooleanField(default=False)
     trapezius_left = models.BooleanField(default=False)
+    note = models.TextField(max_length=500, blank=True )
 
     created_at = models.DateField(auto_now_add=True)
     patient = models.ForeignKey(PatientProfile, on_delete=CASCADE)

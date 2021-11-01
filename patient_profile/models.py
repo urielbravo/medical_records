@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 
 class PatientProfile(models.Model):
@@ -94,3 +95,7 @@ class PatientProfile(models.Model):
 
     def __str__(self):
         return self.name
+    
+    @property
+    def age(self):
+        return int((datetime.now().date() - self.birthday).days / 365.25)

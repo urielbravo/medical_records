@@ -20,6 +20,8 @@ class PainMapping(models.Model):
     left_side_pain_6 = models.PositiveSmallIntegerField(default=0)
     left_side_pain_7 = models.PositiveSmallIntegerField(default=0)
     left_side_pain_8 = models.PositiveSmallIntegerField(default=0)
+    note = models.TextField(max_length=500, blank=True )
+    
     created_at = models.DateField(auto_now_add=True)
     patient = models.ForeignKey(PatientProfile, on_delete=CASCADE)
 

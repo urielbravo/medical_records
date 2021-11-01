@@ -16,6 +16,8 @@ class Laxity(models.Model):
     diagnose = models.CharField(max_length=200)
     treatment_plan = models.CharField(max_length=200)
     budget = models.CharField(max_length=200)
+    note = models.TextField(max_length=500, blank=True)
+
     created_at = models.DateField(auto_now_add=True)
     patient = models.ForeignKey(PatientProfile, on_delete=CASCADE)
 

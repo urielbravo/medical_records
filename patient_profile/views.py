@@ -7,6 +7,7 @@ from .models import PatientProfile
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from .filter import PatientFilter
+from django.db.models.functions import ExtractYear
 
 
 # functions to login a logout the user, basically the auth users
@@ -74,6 +75,7 @@ def admin(request):
 @login_required(login_url='loginuser')
 def patient_detail(request, patient_pk):
     patient = get_object_or_404(PatientProfile, pk=patient_pk)
+    print('birthday', ExtractYear(patient.birthday))
     return render(request, 'admin/patient_detail.html', {'patient': patient})
 
 
